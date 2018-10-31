@@ -123,7 +123,9 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="View.aspx" />
+    <Content Include="MyKifu.aspx" />
+    <Content Include="SearchKifu.aspx" />
+    <Content Include="ViewKifu.aspx" />
     <Content Include="wgo\basicplayer.commentbox.js" />
     <Content Include="wgo\basicplayer.component.js" />
     <Content Include="wgo\basicplayer.control.js" />
@@ -191,7 +193,6 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
-    <Content Include="Search.aspx" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -199,20 +200,27 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="View.aspx.cs">
-      <DependentUpon>View.aspx</DependentUpon>
+    <Compile Include="MyKifu.aspx.cs">
+      <DependentUpon>MyKifu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View.aspx.designer.cs">
-      <DependentUpon>View.aspx</DependentUpon>
+    <Compile Include="MyKifu.aspx.designer.cs">
+      <DependentUpon>MyKifu.aspx</DependentUpon>
     </Compile>
-    <Content Include="App_Code\BusinessLogicLayer\ProcessKifu.cs" />
-    <Content Include="App_Code\DataAccessLayer\DBUtility.cs" />
-    <Content Include="App_Code\Entity\Account.cs" />
-    <Content Include="App_Code\Entity\Opening.cs" />
-    <Content Include="App_Code\Entity\OpenSequence.cs" />
-    <Content Include="App_Code\Entity\KifuEvent.cs" />
-    <Content Include="App_Code\Entity\Kifu.cs" />
+    <Compile Include="SearchKifu.aspx.cs">
+      <DependentUpon>SearchKifu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchKifu.aspx.designer.cs">
+      <DependentUpon>SearchKifu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TwoRowSite.master.cs">
+      <DependentUpon>TwoRowSite.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TwoRowSite.master.designer.cs">
+      <DependentUpon>TwoRowSite.master</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -233,13 +241,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Search.aspx.cs">
-      <DependentUpon>Search.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Search.aspx.designer.cs">
-      <DependentUpon>Search.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -254,6 +255,13 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="ViewKifu.aspx.cs">
+      <DependentUpon>ViewKifu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewKifu.aspx.designer.cs">
+      <DependentUpon>ViewKifu.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -263,12 +271,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="TwoRowSite.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

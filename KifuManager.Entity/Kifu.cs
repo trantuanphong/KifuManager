@@ -24,5 +24,44 @@ namespace KifuManager.Entity
         public DateTime Date { get; set; }
         public String Result { get; set; }
         public String Uploader { get; set; }
+
+        public Kifu(string rule, int size, float komi, float time, string gameName, string @event, int byomiTurn, int byomiTime, string whitePlayer, string blackPlayer, string whiteLevel, string blackLevel, DateTime date, string result, string uploader)
+        {
+            Rule = rule;
+            Size = size;
+            Komi = komi;
+            Time = time;
+            GameName = gameName;
+            Event = @event;
+            ByomiTurn = byomiTurn;
+            ByomiTime = byomiTime;
+            WhitePlayer = whitePlayer;
+            BlackPlayer = blackPlayer;
+            WhiteLevel = whiteLevel;
+            BlackLevel = blackLevel;
+            Date = date;
+            Result = result;
+            Uploader = uploader;
+        }
+
+        public Kifu(int kifuID, string rule, int size, float komi, float time, string gameName, string @event, int byomiTurn, int byomiTime, string whitePlayer, string blackPlayer, string whiteLevel, string blackLevel, DateTime date, string result, string uploader)
+        {
+            KifuID = kifuID;
+            Rule = rule;
+            Size = size;
+            Komi = komi;
+            Time = time;
+            GameName = gameName;
+            Event = @event;
+            ByomiTurn = byomiTurn;
+            ByomiTime = byomiTime;
+            WhitePlayer = whitePlayer;
+            BlackPlayer = blackPlayer;
+            WhiteLevel = whiteLevel;
+            BlackLevel = blackLevel;
+            Date = date;
+            Result = result;
+            Uploader = uploader;
+        }
     }
 }

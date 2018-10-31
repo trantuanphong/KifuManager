@@ -1,0 +1,16 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TwoRowSite.master.cs" Inherits="KifuManager.TwoRowSite" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <br />
+    <div class="row">
+        <div class="col-sm-4">
+            <asp:ContentPlaceHolder ID="LeftContent" runat="server">
+
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="col-sm-8">
+            <asp:ContentPlaceHolder ID="RightContent" runat="server">
+
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+</asp:Content>

@@ -10,7 +10,7 @@
 namespace KifuManager {
     
     
-    public partial class Search {
+    public partial class SearchKifu {
         
         /// <summary>
         /// txtPlayerName control.

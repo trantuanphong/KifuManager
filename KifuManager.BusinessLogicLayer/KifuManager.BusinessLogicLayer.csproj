@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonService.cs" />
     <Compile Include="KifuService.cs" />
     <Compile Include="OpeningService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -51,6 +52,10 @@
     <ProjectReference Include="..\KifuManager.DataAccessLayer\KifuManager.DataAccessLayer.csproj">
       <Project>{a3982f01-c096-4139-98e8-1f58cb013ff9}</Project>
       <Name>KifuManager.DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KifuManager.Entity\KifuManager.Entity.csproj">
+      <Project>{758221b9-0904-4d5a-9f56-c013b2b998d8}</Project>
+      <Name>KifuManager.Entity</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
