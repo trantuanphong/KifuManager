@@ -10,42 +10,51 @@
 namespace KifuManager {
     
     
-    public partial class ViewKifu {
+    public partial class AdminSide {
         
         /// <summary>
-        /// fuKifu control.
+        /// fuOpening control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fuKifu;
+        protected global::System.Web.UI.WebControls.FileUpload fuOpening;
         
         /// <summary>
-        /// gameEvent control.
+        /// btnNewOpening control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox gameEvent;
+        protected global::System.Web.UI.WebControls.Button btnNewOpening;
         
         /// <summary>
-        /// gameName control.
+        /// txtTitleName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox gameName;
+        protected global::System.Web.UI.WebControls.TextBox txtTitleName;
         
         /// <summary>
-        /// gameDate control.
+        /// txtTitlePoint control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox gameDate;
+        protected global::System.Web.UI.WebControls.TextBox txtTitlePoint;
+        
+        /// <summary>
+        /// btnNewTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNewTitle;
     }
 }

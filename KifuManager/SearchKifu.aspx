@@ -31,33 +31,8 @@
         <div class="panel panel-primary">
             <div class="panel-heading">List</div>
             <div class="panel-body">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <td>No</td>
-                            <td>White Player</td>
-                            <td>Black Player</td>
-                            <td>Result</td>
-                            <td>Date</td>
-                            <td>Game Name</td>
-                            <td>Action</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Phong</td>
-                            <td>Phong</td>
-                            <td>W+R</td>
-                            <td>11-11-1111</td>
-                            <td>FGocTournament</td>
-                            <td>
-                                <span class="glyphicon glyphicon-download"></span>
-                                <span class="glyphicon glyphicon-open"></span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <asp:GridView ID="grvListKifu" class="table table-striped" runat="server" AllowPaging="True">
+                </asp:GridView>
             </div>
         </div>
     </div>

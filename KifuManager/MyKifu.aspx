@@ -6,32 +6,8 @@
             <div class="panel-heading">New Kifu</div>
             <div class="panel-body">
                 <asp:FileUpload ID="KifuUpload" runat="server" />
-                <asp:Button ID="btnUpload" runat="server" Text="Upload" OnClick="btnUpload_Click" />
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-            </div>
-        </div>
-    </div>
-    <div class="panel-group">
-        <div class="panel panel-primary">
-            <div class="panel-heading">Search</div>
-            <div class="panel-body">
-                <div class="form-group">
-                    <label for="txtPlayerName">By player name:</label>
-                    <asp:TextBox ID="txtPlayerName" class="form-control" runat="server"></asp:TextBox>
-                </div>
-                <div class="form-group">
-                    <label for="txtGameName">By game name:</label>
-                    <asp:TextBox ID="txtGameName" class="form-control" runat="server"></asp:TextBox>
-                </div>
-                <div class="form-group">
-                    <label for="drRank">By player rank:</label>
-                    <asp:DropDownList ID="drRank" class="form-control" runat="server"></asp:DropDownList>
-                </div>
-                <div class="form-group">
-                    <label for="drOpen">By game opening:</label>
-                    <asp:DropDownList ID="drOpen" class="form-control" runat="server"></asp:DropDownList>
-                </div>
-                <asp:Button ID="btnSubmit" runat="server" Text="Submit" class="btn btn-primary" />
+                <br />
+                <asp:Button ID="btnUpload" class="btn btn-primary" runat="server" Text="Upload" OnClick="btnUpload_Click" />
             </div>
         </div>
     </div>

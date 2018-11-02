@@ -25,15 +25,6 @@ namespace KifuManager
             {
                 inputContent = inputStreamReader.ReadToEnd();
             }
-            var pattern = @"\[(.*?)\]";
-            var query = "H1-receptor antagonist [HSA:3269] [PATH:hsa04080(3269)]";
-            var matches = Regex.Matches(query, pattern);
-
-            foreach (Match m in matches)
-            {
-                Label1.Text = m.Groups[1] + " ";
-                break;
-            }
 
         }
     }
