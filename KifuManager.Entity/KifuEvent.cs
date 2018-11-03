@@ -11,8 +11,20 @@ namespace KifuManager.Entity
         public int KifuID { get; set; }
         public int Move { get; set; }
         public String Position { get; set; }
-        public float TimeLast { get; set; }
-        public int OverTimeTurn { get; set; }
         public String Comment { get; set; }
+
+        public KifuEvent(string position, string comment)
+        {
+            Position = position;
+            Comment = comment;
+        }
+
+        public KifuEvent(int kifuID, int move, string position, string comment)
+        {
+            KifuID = kifuID;
+            Move = move;
+            Position = position;
+            Comment = comment;
+        }
     }
 }

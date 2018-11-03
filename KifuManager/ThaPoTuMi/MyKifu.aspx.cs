@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KifuManager.BusinessLogicLayer;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,7 +26,13 @@ namespace KifuManager
             {
                 inputContent = inputStreamReader.ReadToEnd();
             }
+            KifuService.Insert(inputContent);
+        }
 
+        protected void ListMyKifu(object sender, EventArgs e)
+        {
+            grvList.DataSource = KifuService.GetMyKifu("admin");
+            grvList.DataBind();
         }
     }
 }

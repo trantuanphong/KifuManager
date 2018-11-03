@@ -105,14 +105,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
-    <Content Include="AdminSide.aspx" />
+    <Content Include="ThaPoTuMi\About.aspx" />
+    <Content Include="ThaPoTuMi\AdminSide.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Home.aspx" />
+    <Content Include="ThaPoTuMi\Home.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -124,9 +124,9 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="MyKifu.aspx" />
-    <Content Include="SearchKifu.aspx" />
-    <Content Include="ViewKifu.aspx" />
+    <Content Include="ThaPoTuMi\MyKifu.aspx" />
+    <Content Include="ThaPoTuMi\SearchKifu.aspx" />
+    <Content Include="ThaPoTuMi\ViewKifu.aspx" />
     <Content Include="wgo\basicplayer.commentbox.js" />
     <Content Include="wgo\basicplayer.component.js" />
     <Content Include="wgo\basicplayer.control.js" />
@@ -201,25 +201,25 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminSide.aspx.cs">
+    <Compile Include="ThaPoTuMi\AdminSide.aspx.cs">
       <DependentUpon>AdminSide.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminSide.aspx.designer.cs">
+    <Compile Include="ThaPoTuMi\AdminSide.aspx.designer.cs">
       <DependentUpon>AdminSide.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MyKifu.aspx.cs">
+    <Compile Include="ThaPoTuMi\MyKifu.aspx.cs">
       <DependentUpon>MyKifu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MyKifu.aspx.designer.cs">
+    <Compile Include="ThaPoTuMi\MyKifu.aspx.designer.cs">
       <DependentUpon>MyKifu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SearchKifu.aspx.cs">
+    <Compile Include="ThaPoTuMi\SearchKifu.aspx.cs">
       <DependentUpon>SearchKifu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SearchKifu.aspx.designer.cs">
+    <Compile Include="ThaPoTuMi\SearchKifu.aspx.designer.cs">
       <DependentUpon>SearchKifu.aspx</DependentUpon>
     </Compile>
     <Compile Include="TwoRowSite.master.cs">
@@ -230,19 +230,19 @@
       <DependentUpon>TwoRowSite.master</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="About.aspx.cs">
+    <Compile Include="ThaPoTuMi\About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="About.aspx.designer.cs">
+    <Compile Include="ThaPoTuMi\About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Home.aspx.cs">
+    <Compile Include="ThaPoTuMi\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Home.aspx.designer.cs">
+    <Compile Include="ThaPoTuMi\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -263,11 +263,11 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
-    <Compile Include="ViewKifu.aspx.cs">
+    <Compile Include="ThaPoTuMi\ViewKifu.aspx.cs">
       <DependentUpon>ViewKifu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ViewKifu.aspx.designer.cs">
+    <Compile Include="ThaPoTuMi\ViewKifu.aspx.designer.cs">
       <DependentUpon>ViewKifu.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">

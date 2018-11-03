@@ -46,13 +46,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/Home">ThaPoTuMi</a>
+                    <a class="navbar-brand" runat="server" href="~/ThaPoTuMi/Home">ThaPoTuMi</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/SearchKifu">Search</a></li>
-                        <li><a runat="server" href="~/MyKifu">My Kifu</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
+                        <li><a runat="server" href="~/ThaPoTuMi/SearchKifu">Search</a></li>
+                        <li><a runat="server" href="~/ThaPoTuMi/MyKifu">My Kifu</a></li>
+                        <li><a runat="server" href="~/ThaPoTuMi/About">About</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#signupModal" data-toggle="modal"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>

@@ -13,7 +13,7 @@ namespace KifuManager.BusinessLogicLayer
         {
             string pattern = title + @"\[(.*?)\]";
             Match match = Regex.Match(input, pattern);
-            return match + "";
+            return match.Groups[1] + "";
         }
     }
 }

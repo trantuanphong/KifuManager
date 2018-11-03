@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,11 @@ namespace KifuManager.DataAccessLayer
         public int Insert(object obj)
         {
             KifuEvent kifuEvent = (KifuEvent)obj;
-            throw new NotImplementedException();
+            SqlParameter[] parameters = new SqlParameter[2];
+            string query = "INSERT INTO KifuEvent VALUES((SELECT MAX(KifuID) FROM Kifu),@position,@comment)";
+            parameters[0] = new SqlParameter("@position", kifuEvent.Position);
+            parameters[1] = new SqlParameter("@comment", kifuEvent.Comment);
+            return SqlHelper.ExecuteNonQuery(query, parameters);
         }
 
         public DataTable SelectAll()
