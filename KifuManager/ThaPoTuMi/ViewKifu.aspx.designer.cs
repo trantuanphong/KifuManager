@@ -67,6 +67,15 @@ namespace KifuManager {
         protected global::System.Web.UI.WebControls.Button btnDelete;
         
         /// <summary>
+        /// lblRate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRate;
+        
+        /// <summary>
         /// drRate control.
         /// </summary>
         /// <remarks>
@@ -85,12 +94,21 @@ namespace KifuManager {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea comment;
         
         /// <summary>
-        /// btnComment control.
+        /// btnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnComment;
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
+        
+        /// <summary>
+        /// btnLike control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLike;
     }
 }

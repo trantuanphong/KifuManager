@@ -47,21 +47,25 @@
 
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading">Rating</div>
+            <div class="panel-heading">
+                <asp:Label ID="lblRate" runat="server" Text="Rating: 9/10"></asp:Label>
+            </div>
             <div class="panel-body">
                 <div class="form-group">
                     <label for="comment">
                         Rating and enter your comment here:
-                <asp:DropDownList ID="drRate" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="drRate" runat="server"></asp:DropDownList>
                     </label>
                     <textarea class="form-control" rows="5" id="comment" runat="server" name="txtComment"></textarea>
                 </div>
-                <div class="text-center">
-                    <asp:Button ID="btnComment" class="btn btn-success" runat="server" Text="Submit" />
+                <div class="form-group">
+                        <asp:Button ID="btnSubmit" class="btn btn-primary" runat="server" Text="Submit" />
+                        <asp:Button ID="btnLike" class="btn btn-danger" runat="server" Text="Like" />
                 </div>
             </div>
         </div>
     </div>
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="RightContent" runat="server">
@@ -75,6 +79,5 @@
     <script type="text/javascript" src="../wgo/basicplayer.commentbox.js"></script>
 
     <link rel="stylesheet" type="text/css" href="../wgo/wgo.player.css" />
-
     <div data-wgo="<%=Content%>"></div>
 </asp:Content>
