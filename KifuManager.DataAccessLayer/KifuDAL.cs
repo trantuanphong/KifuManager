@@ -19,7 +19,7 @@ namespace KifuManager.DataAccessLayer
 
         public int Insert(object obj)
         {
-            Kifu kifu = (Kifu) obj;
+            Kifu kifu = (Kifu)obj;
             SqlParameter[] parameters = new SqlParameter[12];
             parameters[0] = new SqlParameter("@rule", kifu.Rule);
             parameters[1] = new SqlParameter("@size", kifu.Size);
@@ -35,9 +35,9 @@ namespace KifuManager.DataAccessLayer
             parameters[11] = new SqlParameter("@uploader", kifu.Uploader);
 
             string query = "INSERT INTO Kifu VALUES(@rule, @size, @komi, @gameName, @event, @whitePlayer, @blackPlayer"
-                +", @whiteLevel, @blackLevel, @date, @result, @uploader)";
+                + ", @whiteLevel, @blackLevel, @date, @result, @uploader)";
 
-            return SqlHelper.ExecuteNonQuery(query,parameters);
+            return SqlHelper.ExecuteNonQuery(query, parameters);
         }
 
         public DataTable SelectAll()
@@ -51,6 +51,15 @@ namespace KifuManager.DataAccessLayer
                 " FROM Kifu k WHERE Uploader = @uploader";
             SqlParameter[] parameters = new SqlParameter[1];
             parameters[0] = new SqlParameter("@uploader", uploader);
+            return SqlHelper.ExecuteDataTable(sql, parameters);
+        }
+
+        public DataTable SelectKifuByID(int id)
+        {
+            string sql = "SELECT k.[Rule], k.Size, k.Komi, k.GameName, k.Event, k.WhitePlayer, k.WhiteLevel, k.BlackPlayer, k.BlackLevel, k.Result, k.Date " +
+    " FROM Kifu k WHERE KifuID = @id";
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@id", id);
             return SqlHelper.ExecuteDataTable(sql, parameters);
         }
 

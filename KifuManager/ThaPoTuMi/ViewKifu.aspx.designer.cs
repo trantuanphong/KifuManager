@@ -22,31 +22,31 @@ namespace KifuManager {
         protected global::System.Web.UI.WebControls.FileUpload fuKifu;
         
         /// <summary>
-        /// gameEvent control.
+        /// txtGameEvent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox gameEvent;
+        protected global::System.Web.UI.WebControls.TextBox txtGameEvent;
         
         /// <summary>
-        /// gameName control.
+        /// txtGameName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox gameName;
+        protected global::System.Web.UI.WebControls.TextBox txtGameName;
         
         /// <summary>
-        /// gameDate control.
+        /// txtGameDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox gameDate;
+        protected global::System.Web.UI.WebControls.TextBox txtGameDate;
         
         /// <summary>
         /// btnSave control.

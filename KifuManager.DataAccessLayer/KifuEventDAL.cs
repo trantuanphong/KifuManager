@@ -27,6 +27,14 @@ namespace KifuManager.DataAccessLayer
             return SqlHelper.ExecuteNonQuery(query, parameters);
         }
 
+        public DataTable SelectByID(int id)
+        {
+            SqlParameter[] parameters = new SqlParameter[1];
+            string query = "SELECT * FROM KifuEvent WHERE KifuID = @id";
+            parameters[0] = new SqlParameter("@id", id);
+            return SqlHelper.ExecuteDataTable(query, parameters);
+        }
+
         public DataTable SelectAll()
         {
             throw new NotImplementedException();

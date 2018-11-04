@@ -21,7 +21,7 @@
                     <label for="drOpen">By game opening:</label>
                     <asp:DropDownList ID="drOpen" class="form-control" runat="server"></asp:DropDownList>
                 </div>
-                <asp:Button ID="btnSubmit" runat="server" Text="Submit" class="btn btn-primary" />
+                <asp:Button ID="btnSearch" runat="server" Text="Search" class="btn btn-primary" />
             </div>
         </div>
     </div>
