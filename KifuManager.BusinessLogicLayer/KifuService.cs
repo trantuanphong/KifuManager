@@ -11,7 +11,7 @@ namespace KifuManager.BusinessLogicLayer
 {
     public class KifuService
     {
-        public static int Insert(string kifuContent)
+        public static int NewKifu(string kifuContent)
         {
             //insert general information
             string rule = CommonService.GetContentInBracket(kifuContent, "RU");
@@ -42,7 +42,15 @@ namespace KifuManager.BusinessLogicLayer
                 kifuEventDAL.Insert(kifuEvent);
             }
 
+            //add point
+            new UserAccDAL().IncreasePoint("admin");
+
             return 0;
+        }
+
+        public static DataTable GetAllKifu()
+        {
+            return new KifuDAL().SelectAll();
         }
 
         public static DataTable GetMyKifu(string uploader)

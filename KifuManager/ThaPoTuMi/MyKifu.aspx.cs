@@ -26,7 +26,7 @@ namespace KifuManager
             {
                 inputContent = inputStreamReader.ReadToEnd();
             }
-            KifuService.Insert(inputContent);
+            KifuService.NewKifu(inputContent);
         }
 
         protected void ListMyKifu(object sender, EventArgs e)

@@ -42,7 +42,9 @@ namespace KifuManager.DataAccessLayer
 
         public DataTable SelectAll()
         {
-            throw new NotImplementedException();
+            string sql = "SELECT k.GameName, k.Event, k.WhitePlayer, k.WhiteLevel, k.BlackPlayer, k.BlackLevel, k.Result, k.Date " 
+                + " FROM Kifu k";
+            return SqlHelper.ExecuteDataTable(sql);
         }
 
         public DataTable SelectMyKifu(string uploader)
