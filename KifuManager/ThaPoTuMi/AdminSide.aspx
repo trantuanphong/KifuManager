@@ -39,7 +39,7 @@
                         <asp:TextBox ID="txtTitlePoint" type="number" runat="server" class="form-control"></asp:TextBox>
                     </div>
                 </div>
-                <asp:Button ID="btnNewTitle" runat="server" class="btn btn-success" Text="New Title" />
+                <asp:Button ID="btnNewTitle" runat="server" class="btn btn-success" Text="New Title" OnClick="btnNewTitle_Click" />
             </div>
         </div>
     </div>

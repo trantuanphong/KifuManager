@@ -33,5 +33,13 @@ namespace KifuManager
             Opening open = new Opening(openingName, openingDescription);
             OpeningService.InsertNewOpening(open, inputContent);
         }
+
+        protected void btnNewTitle_Click(object sender, EventArgs e)
+        {
+            //get data
+            string titleName = txtTitleName.Text;
+            int titlePoint = Int32.Parse(txtTitlePoint.Text);
+
+        }
     }
 }
