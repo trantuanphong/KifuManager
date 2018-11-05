@@ -4,10 +4,22 @@
     <div class="panel-group">
         <div class="panel panel-primary">
             <div class="panel-heading">New Opening</div>
-            <div class="panel-body">
+            <div class="panel-body form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="txtOpenName">Open Name:</label>
+                    <div class="col-sm-8">
+                        <asp:TextBox ID="txtOpenName" runat="server" class="form-control"></asp:TextBox>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="txtDescription">Description:</label>
+                    <div class="col-sm-8">
+                        <asp:TextBox ID="txtOpenDescription" runat="server" class="form-control"></asp:TextBox>
+                    </div>
+                </div>
                 <asp:FileUpload ID="fuOpening" runat="server" />
                 <br />
-                <asp:Button ID="btnNewOpening" runat="server" Text="New Opening" />
+                <asp:Button ID="btnNewOpening" runat="server" class="btn btn-success" Text="Created" OnClick="btnNewOpening_Click" />
             </div>
         </div>
     </div>
@@ -27,7 +39,7 @@
                         <asp:TextBox ID="txtTitlePoint" type="number" runat="server" class="form-control"></asp:TextBox>
                     </div>
                 </div>
-                <asp:Button ID="btnNewTitle" runat="server" Text="New Title" />
+                <asp:Button ID="btnNewTitle" runat="server" class="btn btn-success" Text="New Title" />
             </div>
         </div>
     </div>

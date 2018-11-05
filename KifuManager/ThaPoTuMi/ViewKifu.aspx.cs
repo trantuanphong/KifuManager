@@ -13,7 +13,7 @@ namespace KifuManager
         public String Content { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            Content = KifuService.GetKifuContent(2);
+            Content = KifuService.GetKifuContent(4);
             txtGameDate.Text = CommonService.GetContentInBracket(Content, "DT");
             txtGameName.Text = CommonService.GetContentInBracket(Content, "GN");
             txtGameEvent.Text = CommonService.GetContentInBracket(Content, "EV");

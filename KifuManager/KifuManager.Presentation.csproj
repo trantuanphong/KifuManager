@@ -299,6 +299,10 @@
       <Project>{7396a253-f9b0-4074-af1f-a64507315baf}</Project>
       <Name>KifuManager.BusinessLogicLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KifuManager.Entity\KifuManager.Entity.csproj">
+      <Project>{758221B9-0904-4D5A-9F56-C013B2B998D8}</Project>
+      <Name>KifuManager.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

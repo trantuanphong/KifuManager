@@ -22,10 +22,13 @@ namespace KifuManager
         protected void btnUpload_Click(object sender, EventArgs e)
         {
             string inputContent;
+            //read content of sgf file
             using (StreamReader inputStreamReader = new StreamReader(KifuUpload.PostedFile.InputStream))
             {
                 inputContent = inputStreamReader.ReadToEnd();
             }
+
+            //process content
             KifuService.NewKifu(inputContent);
         }
 

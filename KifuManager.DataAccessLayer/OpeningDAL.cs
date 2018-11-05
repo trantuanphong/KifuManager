@@ -1,6 +1,8 @@
-﻿using System;
+﻿using KifuManager.Entity;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +18,12 @@ namespace KifuManager.DataAccessLayer
 
         public int Insert(object obj)
         {
-            throw new NotImplementedException();
+            Opening open = (Opening)obj;
+            string sql = "INSERT INTO Opening(@name,@description)";
+            SqlParameter[] parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@name", open.OpenName);
+            parameters[1] = new SqlParameter("@description", open.Description);
+            return SqlHelper.ExecuteNonQuery(sql,parameters);
         }
 
         public DataTable SelectAll()
