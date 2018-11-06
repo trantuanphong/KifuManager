@@ -42,7 +42,7 @@ namespace KifuManager.DataAccessLayer
 
         public DataTable SelectAll()
         {
-            string sql = "SELECT k.GameName, k.Event, k.WhitePlayer, k.WhiteLevel, k.BlackPlayer, k.BlackLevel, k.Result, k.Date " 
+            string sql = "SELECT k.KifuID, k.GameName, k.Event, k.WhitePlayer, k.WhiteLevel, k.BlackPlayer, k.BlackLevel, k.Result, k.Date " 
                 + " FROM Kifu k";
             return SqlHelper.ExecuteDataTable(sql);
         }
@@ -68,7 +68,14 @@ namespace KifuManager.DataAccessLayer
         public int Update(object obj)
         {
             Kifu kifu = (Kifu)obj;
-            throw new NotImplementedException();
+            string sql = "UPDATE Kifu SET Date=@date, GameName=@gameName, Event=@gameEvent WHERE KifuID=@id";
+            SqlParameter[] parameters = new SqlParameter[4];
+            parameters[0] = new SqlParameter("@id", kifu.KifuID);
+            parameters[1] = new SqlParameter("@gameName", kifu.GameName);
+            parameters[2] = new SqlParameter("@gameEvent", kifu.Event);
+            parameters[3] = new SqlParameter("@date", kifu.Date.ToShortDateString());
+            return SqlHelper.ExecuteNonQuery(sql, parameters);
         }
+
     }
 }

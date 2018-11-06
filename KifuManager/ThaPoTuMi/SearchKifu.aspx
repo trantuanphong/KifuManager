@@ -31,7 +31,25 @@
         <div class="panel panel-primary">
             <div class="panel-heading">List</div>
             <div class="panel-body">
-                <asp:GridView ID="grvListKifu" class="table table-striped" runat="server" AllowPaging="True">
+                <asp:GridView ID="grvListKifu" class="table table-striped" runat="server" AllowPaging="True" AutoGenerateColumns="False">
+                    <Columns>
+                        <asp:BoundField DataField="KifuID" HeaderText="KifuID" Visible="False" />
+                        <asp:BoundField DataField="GameName" HeaderText="Game Name" />
+                        <asp:BoundField DataField="Event" HeaderText="Event" />
+                        <asp:TemplateField HeaderText="White Player">
+                            <ItemTemplate>
+                                <%#Eval("WhitePlayer") %> <%#Eval("WhiteLevel") %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Black Player">
+                            <ItemTemplate>
+                                <%#Eval("BlackPlayer") %> <%#Eval("BlackLevel") %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="Result" DataFormatString="{0}" HeaderText="Result" />
+                        <asp:BoundField DataField="Date" DataFormatString="{0:d}" HeaderText="Date" />
+                        <asp:HyperLinkField DataNavigateUrlFields="KifuID" DataNavigateUrlFormatString="ViewKifu.aspx?KifuID={0}" HeaderText="Action" Text="View" />
+                    </Columns>
                 </asp:GridView>
             </div>
         </div>

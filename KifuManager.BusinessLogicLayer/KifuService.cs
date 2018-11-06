@@ -81,5 +81,10 @@ namespace KifuManager.BusinessLogicLayer
             }
             return content+")";
         }
+
+        public static int UpdateGeneralInformation(Kifu kifu)
+        {
+            return new KifuDAL().Update(kifu);
+        }
     }
 }

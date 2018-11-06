@@ -22,6 +22,14 @@ namespace KifuManager.Entity
         public String Result { get; set; }
         public String Uploader { get; set; }
 
+        public Kifu(int kifuID, string gameName, string @event, DateTime date)
+        {
+            KifuID = kifuID;
+            GameName = gameName;
+            Event = @event;
+            Date = date;
+        }
+
         public Kifu(string rule, int size, float komi, string gameName, string @event, string whitePlayer, string blackPlayer, string whiteLevel, string blackLevel, DateTime date, string result, string uploader)
         {
             Rule = rule;

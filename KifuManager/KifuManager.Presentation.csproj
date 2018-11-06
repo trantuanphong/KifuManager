@@ -124,6 +124,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="ThaPoTuMi\Login.aspx" />
     <Content Include="ThaPoTuMi\MyKifu.aspx" />
     <Content Include="ThaPoTuMi\SearchKifu.aspx" />
     <Content Include="ThaPoTuMi\ViewKifu.aspx" />
@@ -207,6 +208,13 @@
     </Compile>
     <Compile Include="ThaPoTuMi\AdminSide.aspx.designer.cs">
       <DependentUpon>AdminSide.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ThaPoTuMi\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ThaPoTuMi\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="ThaPoTuMi\MyKifu.aspx.cs">
       <DependentUpon>MyKifu.aspx</DependentUpon>

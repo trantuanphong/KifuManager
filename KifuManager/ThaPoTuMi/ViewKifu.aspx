@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TwoRowSite.master" AutoEventWireup="true" CodeBehind="ViewKifu.aspx.cs" Inherits="KifuManager.ViewKifu" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="LeftContent" runat="server">
-
+    <% if (Session["user"] != null)
+        { %>
     <div class="panel-group">
         <div class="panel panel-primary">
             <div class="panel-heading">Upload file</div>
@@ -10,7 +11,7 @@
             </div>
         </div>
     </div>
-
+    <% } %>
     <div class="panel-group">
         <div class="panel panel-primary">
             <div class="panel-heading">Game Information</div>
@@ -30,17 +31,20 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="gameDate">Game Date:</label>
                     <div class="col-sm-8">
-                        <asp:TextBox ID="txtGameDate" type="date" runat="server" class="form-control">03/19/2018</asp:TextBox>
+                        <asp:TextBox ID="txtGameDate"  runat="server" class="form-control">03/19/2018</asp:TextBox>
                     </div>
                 </div>
+                <% if (Session["user"] != null)
+                    { %>
                 <div class="form-group">
                     <div class="col-sm-2">
-                        <asp:Button ID="btnSave" class="btn btn-primary" runat="server" Text="Save" />
+                        <asp:Button ID="btnSave" class="btn btn-primary" runat="server" Text="Save" OnClick="btnSave_Click" />
                     </div>
                     <div class="col-sm-2">
                         <asp:Button ID="btnDelete" class="btn btn-danger" runat="server" Text="Delete" />
                     </div>
                 </div>
+                <% } %>
             </div>
         </div>
     </div>
