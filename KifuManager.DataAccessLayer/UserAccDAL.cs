@@ -13,23 +13,25 @@ namespace KifuManager.DataAccessLayer
     {
         public int Delete(object obj)
         {
-            UserAcc userAcc = (UserAcc) obj;
+            UserAcc userAcc = (UserAcc)obj;
             throw new NotImplementedException();
         }
 
         public int Insert(object obj)
         {
             UserAcc userAcc = (UserAcc)obj;
-            string sql = "INSERT INTO UserAcc (Username,Email) VALUES('@Username', '@Email'";
-            SqlParameter[] parameters = new SqlParameter[2];
-            parameters[0] = new SqlParameter("@UserName", userAcc.Username);
+            string sql = "INSERT INTO UserAcc VALUES(@username,@password,@email,0,null,1,0)";
+            SqlParameter[] parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@username", userAcc.Username);
+            parameters[1] = new SqlParameter("@password", userAcc.Password);
             parameters[2] = new SqlParameter("@Email", userAcc.Email);
             return SqlHelper.ExecuteNonQuery(sql, parameters);
         }
 
         public DataTable SelectAll()
         {
-            throw new NotImplementedException();
+            string sql = "SELECT * FROM UserAcc";
+            return SqlHelper.ExecuteDataTable(sql);
         }
 
         public int Update(object obj)
@@ -47,26 +49,23 @@ namespace KifuManager.DataAccessLayer
             return SqlHelper.ExecuteNonQuery(query, parameters);
         }
 
-        public int CheckLogin(string username, string password)
-        {
-            UserAcc user = new UserAcc();
-            using (SqlConnection conn = DBUtility.GetConnection())
-            {
-                string sql = "SELECT COUNT(1) FROM UserAcc WHERE Username='" + @username + "' AND Password='" + @password + "' ";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@username", username);
-                cmd.Parameters.AddWithValue("@password", password);
-                conn.Open();
-
-                return Convert.ToInt32(cmd.ExecuteScalar());
-            }
-        }
-
         public UserAcc GetUserByName(string username)
         {
-            string sql = "SELECT * FROM UserAcc WHERE Username='" + @username + "' ";
+            string sql = "SELECT u.Password, u.Email, u.APoint, u.TitleID, u.Status, u.Type FROM UserAcc u WHERE Username=@username";
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@username", username);
+            DataTable dt = SqlHelper.ExecuteDataTable(sql, parameters);
 
-            return null;
+            if (dt.Rows.Count != 1) return null;
+            string password = dt.Rows[0][0].ToString();
+            string email = dt.Rows[0][1].ToString();
+            if (dt.Rows[0][2] == null) dt.Rows[0][2] = 0;
+            int point = Int32.Parse(dt.Rows[0][2].ToString());
+            if (dt.Rows[0][3].ToString().Equals("")) dt.Rows[0][3] = 0;
+            int titleID = Int32.Parse(dt.Rows[0][3].ToString());
+            Boolean status = Boolean.Parse(dt.Rows[0][4].ToString());
+            int type = Int32.Parse(dt.Rows[0][5].ToString());
+            return new UserAcc(username, password, email, point, titleID, status, type);
         }
 
         public int UpdateUser(string username, string email, string password)

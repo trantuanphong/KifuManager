@@ -14,7 +14,11 @@
 
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    <style>
+        input, select, textarea {
+            max-width: 100%;
+        }
+    </style>
 </head>
 <body>
     <form runat="server">
@@ -51,18 +55,25 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/ThaPoTuMi/SearchKifu">Search</a></li>
+                        <% if (Session["user"] != null)
+                            { %>
                         <li><a runat="server" href="~/ThaPoTuMi/MyKifu">My Kifu</a></li>
+                        <li><a runat="server" href="~/ThaPoTuMi/AdminSide">Admin Side</a></li>
+                        <% } %>
                         <li><a runat="server" href="~/ThaPoTuMi/About">About</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <% if (Session["user"] == null)
                             { %>
-                        <li><a href="#signupModal" data-toggle="modal"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
-                        <li><a runat="server" href="~/ThaPoTuMi/Login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+                        <li><a runat="server" href="~/ThaPoTuMi/Register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+
+                        <li><a runat="server" href="~/ThaPoTuMi/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                         <% } %>
                         <% if (Session["user"] != null)
                             { %>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>Log out</a></li>
+                        <li><a>Hello <%=Session["user"].ToString()%></a></li>
+                        <li>
+                            <asp:LinkButton ID="btnLogOut" runat="server" OnClick="btnLogOut_Click"><span class="glyphicon glyphicon-log-out"></span> Log Out</asp:LinkButton></li>
                         <% } %>
                     </ul>
                 </div>

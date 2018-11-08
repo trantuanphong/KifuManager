@@ -15,13 +15,18 @@
                 </div>
                 <div class="form-group">
                     <label for="drRank">By player rank:</label>
-                    <asp:DropDownList ID="drRank" class="form-control" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="drRank" class="form-control" runat="server">
+                        <asp:ListItem Text="All" Value="" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Kyu" Value="k"></asp:ListItem>
+                        <asp:ListItem Text="Dan" Value="d"></asp:ListItem>
+                        <asp:ListItem Text="Pro Dan" Value="p"></asp:ListItem>
+                    </asp:DropDownList>
                 </div>
                 <div class="form-group">
-                    <label for="drOpen">By game opening:</label>
+                    <asp:CheckBox ID="cbOpening" runat="server" Text="By game opening:" />
                     <asp:DropDownList ID="drOpen" class="form-control" runat="server"></asp:DropDownList>
                 </div>
-                <asp:Button ID="btnSearch" runat="server" Text="Search" class="btn btn-primary" />
+                <asp:Button ID="btnSearch" runat="server" Text="Search" class="btn btn-primary" OnClick="btnSearch_Click" />
             </div>
         </div>
     </div>
@@ -38,12 +43,12 @@
                         <asp:BoundField DataField="Event" HeaderText="Event" />
                         <asp:TemplateField HeaderText="White Player">
                             <ItemTemplate>
-                                <%#Eval("WhitePlayer") %> <%#Eval("WhiteLevel") %>
+                                <%#Eval("WhitePlayer") %> (<%#Eval("WhiteLevel") %>)
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Black Player">
                             <ItemTemplate>
-                                <%#Eval("BlackPlayer") %> <%#Eval("BlackLevel") %>
+                                <%#Eval("BlackPlayer") %> (<%#Eval("BlackLevel") %>)
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="Result" DataFormatString="{0}" HeaderText="Result" />

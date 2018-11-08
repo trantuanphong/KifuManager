@@ -21,8 +21,16 @@ namespace KifuManager.DataAccessLayer
             string position = (string)obj;
             string sql = "INSERT INTO OpenSequence VALUES((SELECT MAX(OpenID) FROM Opening),@position)";
             SqlParameter[] parameters = new SqlParameter[1];
-            parameters[1] = new SqlParameter("@position", position);
+            parameters[0] = new SqlParameter("@position", position);
             return SqlHelper.ExecuteNonQuery(sql, parameters);
+        }
+
+        public DataTable SelectByID(int id)
+        {
+            string sql = "SELECT * FROM OpenSequence WHERE OpenID=@id";
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@id", id);
+            return SqlHelper.ExecuteDataTable(sql, parameters);
         }
 
         public DataTable SelectAll()

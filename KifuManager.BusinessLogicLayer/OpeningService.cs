@@ -1,6 +1,7 @@
 ﻿using KifuManager.DataAccessLayer;
 using KifuManager.Entity;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,11 @@ namespace KifuManager.BusinessLogicLayer
             new OpeningDAL().Insert(open);
 
             //insert open move
-
+            ArrayList stepOpening = CommonService.OpeningStep(inputContent);
+            foreach(string step in stepOpening)
+            {
+                new OpeningSequenceDAL().Insert(step);
+            }
             return 0;
         }
     }

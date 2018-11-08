@@ -126,6 +126,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="ThaPoTuMi\Login.aspx" />
     <Content Include="ThaPoTuMi\MyKifu.aspx" />
+    <Content Include="ThaPoTuMi\Register.aspx" />
     <Content Include="ThaPoTuMi\SearchKifu.aspx" />
     <Content Include="ThaPoTuMi\ViewKifu.aspx" />
     <Content Include="wgo\basicplayer.commentbox.js" />
@@ -222,6 +223,13 @@
     </Compile>
     <Compile Include="ThaPoTuMi\MyKifu.aspx.designer.cs">
       <DependentUpon>MyKifu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ThaPoTuMi\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ThaPoTuMi\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="ThaPoTuMi\SearchKifu.aspx.cs">
       <DependentUpon>SearchKifu.aspx</DependentUpon>

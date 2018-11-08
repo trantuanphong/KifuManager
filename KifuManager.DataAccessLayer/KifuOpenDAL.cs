@@ -18,7 +18,12 @@ namespace KifuManager.DataAccessLayer
 
         public int Insert(object obj)
         {
-            throw new NotImplementedException();
+            KifuOpen kifuOpen = (KifuOpen)obj;
+            string sql = "INSERT INTO KifuOpen VALUES((SELECT MAX(KifuID) FROM Kifu),@openID,@player)";
+            SqlParameter[] parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@openID", kifuOpen.OpenID);
+            parameters[1] = new SqlParameter("@player", kifuOpen.Player);
+            return SqlHelper.ExecuteNonQuery(sql, parameters);
         }
 
         public DataTable SelectAll()

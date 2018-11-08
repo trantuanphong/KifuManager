@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -33,17 +34,46 @@ namespace KifuManager.BusinessLogicLayer
 
             //insert kifu event
             string[] kiEvent = kifuContent.Split(';');
+            ArrayList steps = new ArrayList();
             KifuEventDAL kifuEventDAL = new KifuEventDAL();
             for (int i = 2; i < kiEvent.Length; i++)
             {
                 string position = CommonService.GetContentInBracket(kiEvent[i], "[BW]");
+                
+                //if not match B or W i-- and continue
+
+
                 string comment = (kiEvent[i].Split('C').Length > 2) ? kiEvent[i].Split('C')[1] : "" ;
                 KifuEvent kifuEvent = new KifuEvent(position, comment);
                 kifuEventDAL.Insert(kifuEvent);
+                steps.Add(position);
             }
 
-            //add point
-            new UserAccDAL().IncreasePoint("admin");
+            int blackOpening = 0, whiteOpening = 0;
+
+            //define opening
+            foreach(DataRow row in (new OpeningDAL().SelectAll()).Rows)
+            {
+                int id = Int32.Parse(row["OpenID"].ToString());
+                ArrayList openStep = new ArrayList();
+                foreach(DataRow row2 in (new OpeningSequenceDAL().SelectByID(id).Rows))
+                {
+                    openStep.Add(row2["Position"].ToString());
+                }
+                int count = 0;
+                for (int i = 0; i <= 3; i++)
+                {
+                    openStep = CommonService.Rotate90(openStep);
+                    count = CommonService.CountExistOpening(steps, openStep);
+                }
+                if (count == 1) blackOpening = id;
+                else if (count == 2) whiteOpening = id;
+                else if (count == 3) blackOpening = whiteOpening = id;
+            }
+
+            //insert into kifu open
+            if (blackOpening != 0) new KifuOpenDAL().Insert(new KifuOpen(blackOpening, blackPlayer));
+            if (whiteOpening != 0) new KifuOpenDAL().Insert(new KifuOpen(whiteOpening, whitePlayer));
 
             return 0;
         }
@@ -85,6 +115,31 @@ namespace KifuManager.BusinessLogicLayer
         public static int UpdateGeneralInformation(Kifu kifu)
         {
             return new KifuDAL().Update(kifu);
+        }
+
+        public static DataTable SearchKifu(string gameName, string playerName, string level)
+        {
+            return new KifuDAL().SearchKifu(gameName, playerName, level);
+        }
+
+        public static DataTable SearchKifuWithOpen(string gameName, string playerName, string level, string openID)
+        {
+            return new KifuDAL().SearchKifuWithOpen(gameName, playerName, level, openID);
+        }
+
+        public static DataTable GetTopNewKifu()
+        {
+            return new KifuDAL().SelectTopNewKifu();
+        }
+
+        public static DataTable GetFavouriteKifu(string username)
+        {
+            return new KifuDAL().SelectFavouriteKifu(username);
+        }
+
+        public static DataTable GetOpening()
+        {
+            return new OpeningDAL().SelectAll();
         }
     }
 }

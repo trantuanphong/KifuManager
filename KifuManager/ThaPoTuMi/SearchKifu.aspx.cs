@@ -15,10 +15,22 @@ namespace KifuManager
         {
             if (!IsPostBack)
             {
-                DataTable dt = KifuService.GetAllKifu();
-                grvListKifu.DataSource = dt;
+                grvListKifu.DataSource = KifuService.GetAllKifu();
                 grvListKifu.DataBind();
+
+                drOpen.DataSource = KifuService.GetOpening();
+                drOpen.DataTextField = "OpenName";
+                drOpen.DataValueField = "OpenID";
+                drOpen.DataBind();
             }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (cbOpening.Checked && !drOpen.SelectedValue.Equals(""))
+                grvListKifu.DataSource = KifuService.SearchKifuWithOpen(txtGameName.Text, txtPlayerName.Text, drRank.SelectedValue,drOpen.SelectedValue);
+            else grvListKifu.DataSource = KifuService.SearchKifu(txtGameName.Text,txtPlayerName.Text,drRank.SelectedValue);
+            grvListKifu.DataBind();
         }
     }
 }

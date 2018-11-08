@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBUtility.cs" />
+    <Compile Include="FavouriteKifuDAL.cs" />
     <Compile Include="ISQL.cs" />
     <Compile Include="KifuDAL.cs" />
     <Compile Include="KifuEventDAL.cs" />

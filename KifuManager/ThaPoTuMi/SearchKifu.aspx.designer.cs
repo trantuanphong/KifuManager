@@ -40,6 +40,15 @@ namespace KifuManager {
         protected global::System.Web.UI.WebControls.DropDownList drRank;
         
         /// <summary>
+        /// cbOpening control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbOpening;
+        
+        /// <summary>
         /// drOpen control.
         /// </summary>
         /// <remarks>

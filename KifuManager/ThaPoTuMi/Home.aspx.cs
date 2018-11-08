@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KifuManager.BusinessLogicLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,11 @@ namespace KifuManager
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                grvTopNews.DataSource = KifuService.GetTopNewKifu();
+                grvTopNews.DataBind();
+            }
         }
     }
 }

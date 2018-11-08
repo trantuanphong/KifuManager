@@ -14,8 +14,14 @@ namespace KifuManager
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] == null)
+            {
+                Response.Redirect("~/ThaPoTuMi/Home");
+            }
+
             if (!IsPostBack)
             {
+
             }
         }
 
@@ -30,11 +36,20 @@ namespace KifuManager
 
             //process content
             KifuService.NewKifu(inputContent);
+
+            //increase point
+            UserAccService.IncreasePoint(Session["user"].ToString());
         }
 
-        protected void ListMyKifu(object sender, EventArgs e)
+        protected void btnListMyKifu_Click(object sender, EventArgs e)
         {
-            grvList.DataSource = KifuService.GetMyKifu("admin");
+            grvList.DataSource = KifuService.GetMyKifu(Session["user"].ToString());
+            grvList.DataBind();
+        }
+
+        protected void btnListFavorKifu_Click(object sender, EventArgs e)
+        {
+            grvList.DataSource = KifuService.GetFavouriteKifu(Session["user"].ToString());
             grvList.DataBind();
         }
     }

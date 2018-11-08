@@ -1,6 +1,7 @@
 ﻿using KifuManager.BusinessLogicLayer;
 using KifuManager.Entity;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace KifuManager
             using (StreamReader inputStreamReader = new StreamReader(fuOpening.PostedFile.InputStream))
             {
                 inputContent = inputStreamReader.ReadToEnd();
-            }
+            }         
 
             //insert new opening information
             Opening open = new Opening(openingName, openingDescription);
@@ -40,6 +41,17 @@ namespace KifuManager
             string titleName = txtTitleName.Text;
             int titlePoint = Int32.Parse(txtTitlePoint.Text);
 
+        }
+
+        protected void btnListTitle_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void btnListUser_Click(object sender, EventArgs e)
+        {
+            grvList.DataSource = UserAccService.GetUser();
+            grvList.DataBind();
         }
     }
 }

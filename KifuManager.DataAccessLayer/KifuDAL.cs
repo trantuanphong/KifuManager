@@ -42,14 +42,14 @@ namespace KifuManager.DataAccessLayer
 
         public DataTable SelectAll()
         {
-            string sql = "SELECT k.KifuID, k.GameName, k.Event, k.WhitePlayer, k.WhiteLevel, k.BlackPlayer, k.BlackLevel, k.Result, k.Date " 
+            string sql = "SELECT k.KifuID, k.GameName, k.Event, k.WhitePlayer, k.WhiteLevel, k.BlackPlayer, k.BlackLevel, k.Result, k.Date "
                 + " FROM Kifu k";
             return SqlHelper.ExecuteDataTable(sql);
         }
 
         public DataTable SelectMyKifu(string uploader)
         {
-            string sql = "SELECT k.GameName, k.Event, k.WhitePlayer, k.WhiteLevel, k.BlackPlayer, k.BlackLevel, k.Result, k.Date " +
+            string sql = "SELECT k.KifuID, k.GameName, k.Event, k.WhitePlayer, k.WhiteLevel, k.BlackPlayer, k.BlackLevel, k.Result, k.Date " +
                 " FROM Kifu k WHERE Uploader = @uploader";
             SqlParameter[] parameters = new SqlParameter[1];
             parameters[0] = new SqlParameter("@uploader", uploader);
@@ -77,5 +77,46 @@ namespace KifuManager.DataAccessLayer
             return SqlHelper.ExecuteNonQuery(sql, parameters);
         }
 
+        public DataTable SearchKifu(string gameName, string playerName, string level)
+        {
+            string sql = "SELECT k.KifuID, k.GameName, k.Event, k.WhitePlayer, k.WhiteLevel, k.BlackPlayer, k.BlackLevel, k.Result, k.Date " +
+                " FROM Kifu k WHERE GameName LIKE @gameName AND (WhitePlayer LIKE @playerName OR BlackPlayer LIKE @playerName) " +
+                " AND (WhiteLevel LIKE @level OR BlackLevel LIKE @level)";
+            SqlParameter[] parameters = parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@gameName", "%" + gameName + "%");
+            parameters[1] = new SqlParameter("@playerName", "%" + playerName + "%");
+            parameters[2] = new SqlParameter("@level", "%" + level + "%");
+            return SqlHelper.ExecuteDataTable(sql, parameters);
+        }
+
+        public DataTable SearchKifuWithOpen(string gameName, string playerName, string level, string openID)
+        {
+            string sql = "SELECT k.KifuID, k.GameName, k.Event, k.WhitePlayer, k.WhiteLevel, k.BlackPlayer, k.BlackLevel, k.Result, k.Date " +
+                " FROM Kifu k LEFT JOIN KifuOpen ko ON k.KifuID = ko.KifuID WHERE GameName LIKE @gameName AND (WhitePlayer LIKE @playerName OR BlackPlayer LIKE @playerName) " +
+                " AND (WhiteLevel LIKE @level OR BlackLevel LIKE @level) AND ko.OpenID = @openID";
+            
+            SqlParameter[] parameters = new SqlParameter[4];
+            parameters[0] = new SqlParameter("@gameName", "%" + gameName + "%");
+            parameters[1] = new SqlParameter("@playerName", "%" + playerName + "%");
+            parameters[2] = new SqlParameter("@level", "%" + level + "%");
+            parameters[3] = new SqlParameter("@openID", openID);
+            return SqlHelper.ExecuteDataTable(sql, parameters);
+        }
+
+        public DataTable SelectTopNewKifu()
+        {
+            string sql = "SELECT TOP(5) k.KifuID, k.WhitePlayer, k.BlackPlayer, k.WhiteLevel, k.BlackLevel, k.Result "
+                + " FROM Kifu k ORDER BY KifuID DESC";
+            return SqlHelper.ExecuteDataTable(sql);
+        }
+
+        public DataTable SelectFavouriteKifu(string username)
+        {
+            string sql = "SELECT k.KifuID, k.GameName, k.[Event], k.WhitePlayer, k.BlackPlayer, k.BlackPlayer, k.BlackLevel, k.Result, k.[Date] " +
+                " FROM FavouriteKifu f LEFT JOIN Kifu k ON f.KifuID = k.KifuID WHERE f.Username = @username";
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@username", username);
+            return SqlHelper.ExecuteDataTable(sql, parameters);
+        }
     }
 }

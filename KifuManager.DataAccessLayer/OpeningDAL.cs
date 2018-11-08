@@ -19,7 +19,7 @@ namespace KifuManager.DataAccessLayer
         public int Insert(object obj)
         {
             Opening open = (Opening)obj;
-            string sql = "INSERT INTO Opening(@name,@description)";
+            string sql = "INSERT INTO Opening VALUES(@name,@description)";
             SqlParameter[] parameters = new SqlParameter[2];
             parameters[0] = new SqlParameter("@name", open.OpenName);
             parameters[1] = new SqlParameter("@description", open.Description);
@@ -28,7 +28,8 @@ namespace KifuManager.DataAccessLayer
 
         public DataTable SelectAll()
         {
-            throw new NotImplementedException();
+            string sql = "SELECT * FROM Opening";
+            return SqlHelper.ExecuteDataTable(sql);
         }
 
         public int Update(object obj)

@@ -18,16 +18,20 @@ namespace KifuManager
         {
             KifuID = Int32.Parse(Request.QueryString["KifuID"]);
             Content = KifuService.GetKifuContent(KifuID);
-            txtGameDate.Text = DateTime.Parse(CommonService.GetContentInBracket(Content, "DT")).ToShortDateString();
-            txtGameName.Text = CommonService.GetContentInBracket(Content, "GN");
-            txtGameEvent.Text = CommonService.GetContentInBracket(Content, "EV");
+            if (!IsPostBack)
+            {
+                Content = KifuService.GetKifuContent(KifuID);
+                txtGameDate.Text = DateTime.Parse(CommonService.GetContentInBracket(Content, "DT")).ToShortDateString();
+                txtGameName.Text = CommonService.GetContentInBracket(Content, "GN");
+                txtGameEvent.Text = CommonService.GetContentInBracket(Content, "EV");
+            }
+
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
             Kifu kifu = new Kifu(KifuID, txtGameName.Text, txtGameEvent.Text, DateTime.Parse(txtGameDate.Text));
             int res = KifuService.UpdateGeneralInformation(kifu);
-            if (res == 1) txtGameName.Text = kifu.GameName;
         }
     }
 }

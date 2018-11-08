@@ -28,7 +28,8 @@ namespace KifuManager.DataAccessLayer
 
         public DataTable SelectAll()
         {
-            throw new NotImplementedException();
+            string sql = "SELECT * FROM Title";
+            return SqlHelper.ExecuteDataTable(sql);
         }
 
         public int Update(object obj)
