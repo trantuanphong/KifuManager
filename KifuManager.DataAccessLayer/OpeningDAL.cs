@@ -13,7 +13,11 @@ namespace KifuManager.DataAccessLayer
     {
         public int Delete(object obj)
         {
-            throw new NotImplementedException();
+            int openID = (int)obj;
+            string sql = "DELETE FROM Opening WHERE OpenID=@openID";
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@openID", openID);
+            return SqlHelper.ExecuteNonQuery(sql, parameters);
         }
 
         public int Insert(object obj)
@@ -28,13 +32,21 @@ namespace KifuManager.DataAccessLayer
 
         public DataTable SelectAll()
         {
-            string sql = "SELECT * FROM Opening";
+            string sql = "SELECT o.OpenID, o.OpenName, o.Description FROM Opening o";
             return SqlHelper.ExecuteDataTable(sql);
         }
 
         public int Update(object obj)
         {
             throw new NotImplementedException();
+        }
+
+        public DataTable SelectPopularOpening()
+        {
+            string sql = "SELECT o.OpenID, o.OpenName, o.Description, m.Amount FROM " +
+                " (SELECT OpenID, COUNT(KifuID) AS Amount FROM KifuOpen " +
+                " GROUP BY OpenID) m LEFT JOIN Opening o ON m.OpenID = o.OpenID";
+            return SqlHelper.ExecuteDataTable(sql);
         }
     }
 }

@@ -64,9 +64,14 @@
                     </label>
                     <textarea class="form-control" rows="5" id="comment" runat="server" name="txtComment"></textarea>
                 </div>
-                <div class="form-group">
+                <div class="form-inline text-center">
                     <asp:Button ID="btnSubmit" class="btn btn-primary" runat="server" Text="Submit" />
-                    <asp:Button ID="btnLike" class="btn btn-danger" runat="server" Text="Like" />
+                    <% if (IsFavour)
+                        {  %>
+                    <asp:Button ID="btnDisLike" class="btn btn-danger" runat="server" Text="Dislike" OnClick="btnDisLike_Click" />
+                    <%}  else { %>
+                    <asp:Button ID="btnLike" class="btn btn-success" runat="server" Text="Like" OnClick="btnLike_Click" />
+                    <% } %>
                 </div>
             </div>
         </div>

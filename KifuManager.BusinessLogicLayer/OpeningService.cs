@@ -24,5 +24,13 @@ namespace KifuManager.BusinessLogicLayer
             }
             return 0;
         }
+
+        public static int DeleteOpening(int openID)
+        {
+            new KifuOpenDAL().Delete(openID);
+            new OpeningSequenceDAL().Delete(openID);
+            new OpeningDAL().Delete(openID);
+            return 0;
+        }
     }
 }

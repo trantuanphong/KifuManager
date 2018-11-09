@@ -10,5 +10,11 @@ namespace KifuManager.Entity
     {
         public int KifuID { get; set; }
         public String Username { get; set; }
+
+        public FavouriteKifu(int kifuID, string username)
+        {
+            KifuID = kifuID;
+            Username = username;
+        }
     }
 }

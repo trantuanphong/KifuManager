@@ -35,7 +35,7 @@ namespace KifuManager
             }
 
             //process content
-            KifuService.NewKifu(inputContent);
+            KifuService.NewKifu(inputContent, Session["user"].ToString());
 
             //increase point
             UserAccService.IncreasePoint(Session["user"].ToString());
@@ -49,7 +49,7 @@ namespace KifuManager
 
         protected void btnListFavorKifu_Click(object sender, EventArgs e)
         {
-            grvList.DataSource = KifuService.GetFavouriteKifu(Session["user"].ToString());
+            grvList.DataSource = FavouriteKifuService.GetFavouriteKifu(Session["user"].ToString());
             grvList.DataBind();
         }
     }

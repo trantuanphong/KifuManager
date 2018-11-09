@@ -51,6 +51,7 @@
     <Compile Include="KifuDAL.cs" />
     <Compile Include="KifuEventDAL.cs" />
     <Compile Include="KifuOpenDAL.cs" />
+    <Compile Include="KifuRatingDAL.cs" />
     <Compile Include="OpeningDAL.cs" />
     <Compile Include="OpeningSequenceDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

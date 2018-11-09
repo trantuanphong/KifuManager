@@ -14,7 +14,7 @@
                 <div class="panel panel-primary">
                     <div class="panel panel-heading">TOP POPULAR OPENING</div>
                     <div class="panel panel-body">
-                        <asp:GridView ID="grvTopOpening" class="table table-striped" runat="server"></asp:GridView>
+                        <asp:GridView ID="grvTopOpening" class="table table-striped" runat="server" AutoGenerateColumns="False"></asp:GridView>
                     </div>
                 </div>
             </div>
@@ -24,7 +24,22 @@
                 <div class="panel panel-primary">
                     <div class="panel panel-heading">TOP FAVOURITE KIFU</div>
                     <div class="panel panel-body">
-                        <asp:GridView ID="grvTopFavourite" class="table table-striped" runat="server"></asp:GridView>
+                        <asp:GridView ID="grvTopFavourite" class="table table-striped" runat="server" AutoGenerateColumns="False">
+                            <Columns>
+                                <asp:BoundField DataField="KifuID" HeaderText="KifuID" Visible="False" />
+                                <asp:TemplateField HeaderText="White Player">
+                                    <ItemTemplate>
+                                        <%#Eval("WhitePlayer") %> (<%#Eval("WhiteLevel") %>)
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Black Player">
+                                    <ItemTemplate>
+                                        <%#Eval("BlackPlayer") %> (<%#Eval("BlackLevel") %>)
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:HyperLinkField DataNavigateUrlFields="KifuID" DataNavigateUrlFormatString="ViewKifu.aspx?KifuID={0}" HeaderText="Action" Text="<span class='glyphicon glyphicon-log-out'>" />
+                            </Columns>
+                        </asp:GridView>
                     </div>
                 </div>
             </div>

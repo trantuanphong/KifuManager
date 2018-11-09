@@ -13,7 +13,11 @@ namespace KifuManager.DataAccessLayer
     {
         public int Delete(object obj)
         {
-            throw new NotImplementedException();
+            int openID = (int)obj;
+            string sql = "DELETE FROM OpenSequence WHERE OpenID=@openID";
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@openID", openID);
+            return SqlHelper.ExecuteNonQuery(sql, parameters);
         }
 
         public int Insert(object obj)

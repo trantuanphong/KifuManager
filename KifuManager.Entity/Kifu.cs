@@ -30,6 +30,21 @@ namespace KifuManager.Entity
             Date = date;
         }
 
+        public Kifu(string rule, int size, float komi, string gameName, string @event, string whitePlayer, string blackPlayer, string whiteLevel, string blackLevel, string result, string uploader)
+        {
+            Rule = rule;
+            Size = size;
+            Komi = komi;
+            GameName = gameName;
+            Event = @event;
+            WhitePlayer = whitePlayer;
+            BlackPlayer = blackPlayer;
+            WhiteLevel = whiteLevel;
+            BlackLevel = blackLevel;
+            Result = result;
+            Uploader = uploader;
+        }
+
         public Kifu(string rule, int size, float komi, string gameName, string @event, string whitePlayer, string blackPlayer, string whiteLevel, string blackLevel, DateTime date, string result, string uploader)
         {
             Rule = rule;

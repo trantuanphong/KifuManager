@@ -16,6 +16,9 @@ namespace KifuManager
             {
                 grvTopNews.DataSource = KifuService.GetTopNewKifu();
                 grvTopNews.DataBind();
+
+                grvTopFavourite.DataSource = FavouriteKifuService.GetTopFavouriteKifu();
+                grvTopFavourite.DataBind();
             }
         }
     }

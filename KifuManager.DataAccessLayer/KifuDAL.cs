@@ -13,8 +13,11 @@ namespace KifuManager.DataAccessLayer
     {
         public int Delete(object obj)
         {
-            Kifu kifu = (Kifu)obj;
-            throw new NotImplementedException();
+            int kifuID = (int)obj;
+            string sql = "DELETE FROM Kifu WHERE KifuID=@kifuID";
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@kifuID", kifuID);
+            return SqlHelper.ExecuteNonQuery(sql, parameters);
         }
 
         public int Insert(object obj)
@@ -110,13 +113,5 @@ namespace KifuManager.DataAccessLayer
             return SqlHelper.ExecuteDataTable(sql);
         }
 
-        public DataTable SelectFavouriteKifu(string username)
-        {
-            string sql = "SELECT k.KifuID, k.GameName, k.[Event], k.WhitePlayer, k.BlackPlayer, k.BlackPlayer, k.BlackLevel, k.Result, k.[Date] " +
-                " FROM FavouriteKifu f LEFT JOIN Kifu k ON f.KifuID = k.KifuID WHERE f.Username = @username";
-            SqlParameter[] parameters = new SqlParameter[1];
-            parameters[0] = new SqlParameter("@username", username);
-            return SqlHelper.ExecuteDataTable(sql, parameters);
-        }
     }
 }

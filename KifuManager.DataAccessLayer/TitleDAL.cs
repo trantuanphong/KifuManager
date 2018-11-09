@@ -13,7 +13,11 @@ namespace KifuManager.DataAccessLayer
     {
         public int Delete(object obj)
         {
-            throw new NotImplementedException();
+            int titleID = (int)obj;
+            string sql = "DELETE FROM Title WHERE TitleID=@titleID";
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@titleID", titleID);
+            return SqlHelper.ExecuteNonQuery(sql, parameters);
         }
 
         public int Insert(object obj)
@@ -21,14 +25,14 @@ namespace KifuManager.DataAccessLayer
             Title title = (Title)obj;
             string sql = "INSERT INTO Title VALUES(@titleName,@point)";
             SqlParameter[] parameters = new SqlParameter[2];
-            parameters[1] = new SqlParameter("@titleName", title.TitleName);
+            parameters[0] = new SqlParameter("@titleName", title.TitleName);
             parameters[1] = new SqlParameter("@point", title.Point);
             return SqlHelper.ExecuteNonQuery(sql, parameters);
         }
 
         public DataTable SelectAll()
         {
-            string sql = "SELECT * FROM Title";
+            string sql = "SELECT t.TitleID, t.TitleName, t.Point FROM Title t";
             return SqlHelper.ExecuteDataTable(sql);
         }
 

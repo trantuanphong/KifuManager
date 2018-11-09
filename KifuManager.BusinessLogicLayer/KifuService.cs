@@ -12,7 +12,7 @@ namespace KifuManager.BusinessLogicLayer
 {
     public class KifuService
     {
-        public static int NewKifu(string kifuContent)
+        public static int NewKifu(string kifuContent, string username)
         {
             //insert general information
             string rule = CommonService.GetContentInBracket(kifuContent, "RU");
@@ -25,10 +25,11 @@ namespace KifuManager.BusinessLogicLayer
             string blackLevel = CommonService.GetContentInBracket(kifuContent, "BR");
             string whiteLevel = CommonService.GetContentInBracket(kifuContent, "WR");
             string date = CommonService.GetContentInBracket(kifuContent, "DT");
+            if (date.Equals("")) date = DateTime.Now.ToShortDateString();
             string result = CommonService.GetContentInBracket(kifuContent, "RE");
 
             Kifu kifu = new Kifu(rule,Int32.Parse(size),float.Parse(komi),gameName,gameEvent,
-                whitePlayer, blackPlayer,whiteLevel,blackLevel,DateTime.Parse(date),result,"admin");
+                whitePlayer, blackPlayer,whiteLevel,blackLevel,DateTime.Parse(date),result,username);
 
             new KifuDAL().Insert(kifu);
 
@@ -132,14 +133,18 @@ namespace KifuManager.BusinessLogicLayer
             return new KifuDAL().SelectTopNewKifu();
         }
 
-        public static DataTable GetFavouriteKifu(string username)
-        {
-            return new KifuDAL().SelectFavouriteKifu(username);
-        }
-
         public static DataTable GetOpening()
         {
             return new OpeningDAL().SelectAll();
+        }
+
+        public static int DeleteKifu(int kifuID)
+        {
+            new KifuRatingDAL().Delete(kifuID);
+            new FavouriteKifuDAL().Delete(kifuID);
+            new KifuEventDAL().Delete(kifuID);
+            new KifuDAL().Delete(kifuID);
+            return 0;
         }
     }
 }
