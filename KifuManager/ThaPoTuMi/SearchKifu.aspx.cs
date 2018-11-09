@@ -23,14 +23,25 @@ namespace KifuManager
                 drOpen.DataValueField = "OpenID";
                 drOpen.DataBind();
             }
+
+            if (Request.QueryString["openID"] != null)
+            {
+                SearchByOpening(Request.QueryString["openID"]);
+                grvListKifu.DataBind();
+            }
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             if (cbOpening.Checked && !drOpen.SelectedValue.Equals(""))
-                grvListKifu.DataSource = KifuService.SearchKifuWithOpen(txtGameName.Text, txtPlayerName.Text, drRank.SelectedValue,drOpen.SelectedValue);
-            else grvListKifu.DataSource = KifuService.SearchKifu(txtGameName.Text,txtPlayerName.Text,drRank.SelectedValue);
+                SearchByOpening(drOpen.SelectedValue);
+            else grvListKifu.DataSource = KifuService.SearchKifu(txtGameName.Text, txtPlayerName.Text, drRank.SelectedValue);
             grvListKifu.DataBind();
+        }
+
+        private void SearchByOpening(string openID)
+        {
+            grvListKifu.DataSource = KifuService.SearchKifuWithOpen(txtGameName.Text, txtPlayerName.Text, drRank.SelectedValue, openID);
         }
     }
 }

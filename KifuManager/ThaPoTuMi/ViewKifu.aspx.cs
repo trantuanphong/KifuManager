@@ -21,15 +21,22 @@ namespace KifuManager
         {
             KifuID = Int32.Parse(Request.QueryString["KifuID"]);
             Content = KifuService.GetKifuContent(KifuID);
-            favourite = new FavouriteKifu(KifuID, Session["user"].ToString());
+            if (Session["user"] != null)
+            {
+                favourite = new FavouriteKifu(KifuID, Session["user"].ToString());
+                IsFavour = FavouriteKifuService.IsFavour(favourite);
+            }
             if (!IsPostBack)
             {
                 Content = KifuService.GetKifuContent(KifuID);
-                txtGameDate.Text = DateTime.Parse(CommonService.GetContentInBracket(Content, "DT")).ToShortDateString();
+                txtGameDate.Text = DateTime.Parse(CommonService.GetContentInBracket(Content, "DT")).ToString("yyyy-MM-dd");
                 txtGameName.Text = CommonService.GetContentInBracket(Content, "GN");
                 txtGameEvent.Text = CommonService.GetContentInBracket(Content, "EV");
-                IsFavour = FavouriteKifuService.IsFavour(favourite);
             }
+            rpComment.DataSource = FavouriteKifuService.GetKifuRating(KifuID);
+            rpComment.DataBind();
+
+            lblRate.Text = FavouriteKifuService.GroupPointOfKifu(KifuID) + "/5";
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -49,5 +56,14 @@ namespace KifuManager
             FavouriteKifuService.UnLikeKifu(favourite);
             IsFavour = false;
         }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            string comment = txtComment.Text;
+            int point = Int32.Parse(drRate.SelectedValue);
+            KifuRating kifuRating = new KifuRating(KifuID, Session["user"].ToString(), point, comment);
+            FavouriteKifuService.RatingAndCommnent(kifuRating);
+        }
+
     }
 }

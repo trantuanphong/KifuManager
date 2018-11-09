@@ -3,6 +3,7 @@ using KifuManager.Entity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,16 @@ namespace KifuManager.BusinessLogicLayer
             new OpeningSequenceDAL().Delete(openID);
             new OpeningDAL().Delete(openID);
             return 0;
+        }
+
+        public static DataTable GetAllOpening()
+        {
+            return new OpeningDAL().SelectAll();
+        }
+
+        public static DataTable GetPopularOpening()
+        {
+            return new OpeningDAL().SelectPopularOpening();
         }
     }
 }

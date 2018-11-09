@@ -81,5 +81,31 @@ namespace KifuManager.DataAccessLayer
                 return cmd.ExecuteNonQuery();
             }
         }
+
+        public int RemoveAllTitle(int titleID)
+        {
+            string sql = "UPDATE UserAcc SET TitleID=NULL WHERE TitleID=@titleID";
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@titleID", titleID);
+            return SqlHelper.ExecuteNonQuery(sql, parameters);
+        }
+
+        public int RemoveTitle(string username, int titleID)
+        {
+            string sql = "UPDATE UserAcc SET TitleID=NULL WHERE TitleID=@titleID AND Username=@username";
+            SqlParameter[] parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@titleID", titleID);
+            parameters[1] = new SqlParameter("@username", username);
+            return SqlHelper.ExecuteNonQuery(sql, parameters);
+        }
+
+        public int UpdateTitle(string username, int titleID)
+        {
+            string sql = "UPDATE UserAcc SET TitleID=@titleID WHERE Username=@username";
+            SqlParameter[] parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@titleID", titleID);
+            parameters[1] = new SqlParameter("@username", username);
+            return SqlHelper.ExecuteNonQuery(sql, parameters);
+        }
     }
 }

@@ -40,5 +40,13 @@ namespace KifuManager.DataAccessLayer
         {
             throw new NotImplementedException();
         }
+
+        public DataTable SelectTitleSuitable(int point)
+        {
+            string sql = "SELECT t.TitleID, t.TitleName, t.Point FROM Title t WHERE Point <= @point";
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@point", point);
+            return SqlHelper.ExecuteDataTable(sql, parameters);
+        }
     }
 }

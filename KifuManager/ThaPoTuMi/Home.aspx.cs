@@ -19,6 +19,9 @@ namespace KifuManager
 
                 grvTopFavourite.DataSource = FavouriteKifuService.GetTopFavouriteKifu();
                 grvTopFavourite.DataBind();
+
+                grvTopOpening.DataSource = OpeningService.GetPopularOpening();
+                grvTopOpening.DataBind();
             }
         }
     }

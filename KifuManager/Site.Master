@@ -71,7 +71,7 @@
                         <% } %>
                         <% if (Session["user"] != null)
                             { %>
-                        <li><a>Hello <%=Session["user"].ToString()%></a></li>
+                        <li><a runat="server" href="~/ThaPoTuMi/MyAccount">Hello, <%=Session["user"].ToString()%></a></li>
                         <li>
                             <asp:LinkButton ID="btnLogOut" runat="server" OnClick="btnLogOut_Click"><span class="glyphicon glyphicon-log-out"></span> Log Out</asp:LinkButton></li>
                         <% } %>

@@ -25,10 +25,6 @@ namespace KifuManager.BusinessLogicLayer
             if (user == null || !user.Password.Equals(username)) return false;
             return true;
         }
-        public static int Update(UserAcc UserAcc)
-        {
-            return dal.Update(UserAcc);
-        }
         public static int UpdateUser(string username, string email, string password)
         {
             return dal.UpdateUser(username, email, password);
@@ -42,9 +38,13 @@ namespace KifuManager.BusinessLogicLayer
         {
             return dal.IncreasePoint(username);
         }
-        public static DataTable GetUser()
+        public static DataTable GetAllUser()
         {
             return dal.SelectAll();
+        }
+        public static UserAcc GetUser(string username)
+        {
+            return dal.GetUserByName(username);
         }
     }
 }

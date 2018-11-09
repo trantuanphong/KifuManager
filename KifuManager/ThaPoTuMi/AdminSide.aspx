@@ -19,7 +19,7 @@
                 </div>
                 <asp:FileUpload ID="fuOpening" runat="server" /><br />
                 <div class="text-center">
-                    <asp:Button ID="btnNewOpening" runat="server" class="btn btn-success" Text="Created" OnClick="btnNewOpening_Click" />
+                    <asp:Button ID="btnNewOpening" runat="server" class="btn btn-success" Text="New Opening" OnClick="btnNewOpening_Click" />
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="txtTitlePoint">Title Point:</label>
                     <div class="col-sm-8">
-                        <asp:TextBox ID="txtTitlePoint" type="number" runat="server" class="form-control"></asp:TextBox>
+                        <asp:TextBox ID="txtTitlePoint" TextMode="Number" runat="server" class="form-control"></asp:TextBox>
                     </div>
                 </div>
                 <div class="text-center">
@@ -50,26 +50,67 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="RightContent" runat="server">
     <div class="panel-group">
-        <div class="form-inline">
-            <asp:Button ID="btnListUser" class="btn btn-primary" runat="server" Text="List User" OnClick="btnListUser_Click" />
-            <asp:Button ID="btnListTitle" class="btn btn-primary" runat="server" Text="List Title" OnClick="btnListTitle_Click" />
-        </div>
-    </div>
-
-    <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading">List Account</div>
+            <div class="panel-heading text-center">LIST ACCOUNT</div>
             <div class="panel-body">
-                <asp:GridView ID="grvList" class="table table-striped" runat="server" AutoGenerateColumns="False">
+                <asp:GridView ID="grvListUser" class="table table-striped" runat="server" AutoGenerateColumns="False">
                     <Columns>
                         <asp:BoundField DataField="Username" HeaderText="Username" />
                         <asp:BoundField DataField="Email" HeaderText="Email" />
                         <asp:BoundField DataField="APoint" HeaderText="Point" />
                         <asp:BoundField DataField="Status" HeaderText="Status" />
                         <asp:BoundField DataField="Type" HeaderText="Type" />
-                        <asp:HyperLinkField DataNavigateUrlFields="Username" DataNavigateUrlFormatString="" HeaderText="Action" Text="Reset" />
+                        <asp:TemplateField HeaderText="Action">
+                            <ItemTemplate>
+                                <asp:HyperLink ID="hlReset" runat="server" NavigateUrl='<%# Eval("Username") %>' Text="Reset"></asp:HyperLink>
+                                <asp:HyperLink ID="hlBan" runat="server" NavigateUrl='<%# Eval("Username") %>' Text="Ban"></asp:HyperLink>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-center">LIST TITLE</div>
+                    <div class="panel-body">
+                        <asp:GridView ID="grvListTitle" class="table table-striped" runat="server" AutoGenerateColumns="False">
+                            <Columns>
+                                <asp:BoundField DataField="TitleID" HeaderText="TitleID"/>
+                                <asp:BoundField DataField="TitleName" HeaderText="Title Name" />
+                                <asp:BoundField DataField="Point" HeaderText="Point" />
+                                <asp:TemplateField HeaderText="Action">
+                                    <ItemTemplate>
+                                        <asp:HyperLink ID="hlDeleteTitle" runat="server" NavigateUrl='<%# Eval("TitleID") %>' Text="Delete"></asp:HyperLink>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-center">LIST OPENING</div>
+                    <div class="panel-body">
+                        <asp:GridView ID="grvListOpen" class="table table-striped" runat="server" AutoGenerateColumns="False">
+                            <Columns>
+                                <asp:BoundField DataField="OpenID" HeaderText="OpenID"/>
+                                <asp:BoundField DataField="OpenName" HeaderText="Open Name" />
+                                <asp:TemplateField HeaderText="Action">
+                                    <ItemTemplate>
+                                        <asp:HyperLink ID="hlDeleteOpen" runat="server" NavigateUrl='<%# Eval("OpenID") %>' Text="Delete"></asp:HyperLink>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

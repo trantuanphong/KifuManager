@@ -12,9 +12,16 @@
         <div class="col-md-4">
             <div class="panel-group">
                 <div class="panel panel-primary">
-                    <div class="panel panel-heading">TOP POPULAR OPENING</div>
+                    <div class="panel panel-heading text-center">TOP POPULAR OPENING</div>
                     <div class="panel panel-body">
-                        <asp:GridView ID="grvTopOpening" class="table table-striped" runat="server" AutoGenerateColumns="False"></asp:GridView>
+                        <asp:GridView ID="grvTopOpening" class="table table-striped" runat="server" AutoGenerateColumns="False">
+                            <Columns>
+                                <asp:BoundField DataField="OpenID" HeaderText="OpenID" Visible="False" />
+                                <asp:BoundField DataField="OpenName" HeaderText="Open Name" />
+                                <asp:BoundField DataField="Amount" HeaderText="Used"/>
+                                <asp:HyperLinkField DataNavigateUrlFields="OpenID" DataNavigateUrlFormatString="SearchKifu.aspx?openID={0}" HeaderText="Action" Text="<span class='glyphicon glyphicon-log-out'>" />
+                            </Columns>
+                        </asp:GridView>
                     </div>
                 </div>
             </div>
@@ -22,7 +29,7 @@
         <div class="col-md-4">
             <div class="panel-group">
                 <div class="panel panel-primary">
-                    <div class="panel panel-heading">TOP FAVOURITE KIFU</div>
+                    <div class="panel panel-heading text-center">TOP FAVOURITE KIFU</div>
                     <div class="panel panel-body">
                         <asp:GridView ID="grvTopFavourite" class="table table-striped" runat="server" AutoGenerateColumns="False">
                             <Columns>
@@ -47,7 +54,7 @@
         <div class="col-md-4">
             <div class="panel-group">
                 <div class="panel panel-primary">
-                    <div class="panel panel-heading">TOP NEW KIFUS</div>
+                    <div class="panel panel-heading text-center">TOP NEW KIFUS</div>
                     <div class="panel panel-body">
                         <asp:GridView ID="grvTopNews" class="table table-striped" runat="server" AutoGenerateColumns="False">
                             <Columns>

@@ -12,5 +12,13 @@ namespace KifuManager.Entity
         public String Username { get; set; }
         public int RatePoint { get; set; }
         public String Comment { get; set; }
+
+        public KifuRating(int kifuID, string username, int ratePoint, string comment)
+        {
+            KifuID = kifuID;
+            Username = username;
+            RatePoint = ratePoint;
+            Comment = comment;
+        }
     }
 }

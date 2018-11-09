@@ -37,5 +37,32 @@ namespace KifuManager.BusinessLogicLayer
         {
             return new FavouriteKifuDAL().SelectTopFavour();
         }
+
+        public static int RatingAndCommnent(KifuRating kifuRating)
+        {
+            KifuRatingDAL dal = new KifuRatingDAL();
+
+            if (dal.Select(kifuRating).Rows.Count != 1)
+            {
+                return dal.Insert(kifuRating);
+            }
+            else
+            {
+                return dal.Update(kifuRating);
+            }
+        }
+
+        public static DataTable GetKifuRating(int kifuID)
+        {
+            return new KifuRatingDAL().SelectByID(kifuID);
+        }
+
+        public static int GroupPointOfKifu(int kifuID)
+        {
+            DataTable dt = new KifuRatingDAL().GroupPointOfKifu(kifuID);
+            int point = 0;
+            if (dt.Rows.Count == 1 && dt.Rows[0][1] != null) point = Int32.Parse(dt.Rows[0][1].ToString());
+            return point;
+        }
     }
 }

@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="LeftContent" runat="server">
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading">Search</div>
+            <div class="panel-heading text-center">SEARCH</div>
             <div class="panel-body">
                 <div class="form-group">
                     <label for="txtPlayerName">By player name:</label>
@@ -26,7 +26,9 @@
                     <asp:CheckBox ID="cbOpening" runat="server" Text="By game opening:" />
                     <asp:DropDownList ID="drOpen" class="form-control" runat="server"></asp:DropDownList>
                 </div>
-                <asp:Button ID="btnSearch" runat="server" Text="Search" class="btn btn-primary" OnClick="btnSearch_Click" />
+                <div class="text-center">
+                    <asp:Button ID="btnSearch" runat="server" Text="Search" class="btn btn-primary" OnClick="btnSearch_Click" />
+                </div>
             </div>
         </div>
     </div>
@@ -34,7 +36,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="RightContent" runat="server">
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading">List</div>
+            <div class="panel-heading text-center">LIST OF KIFU</div>
             <div class="panel-body">
                 <asp:GridView ID="grvListKifu" class="table table-striped" runat="server" AllowPaging="True" AutoGenerateColumns="False">
                     <Columns>

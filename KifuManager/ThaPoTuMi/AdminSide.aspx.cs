@@ -15,7 +15,14 @@ namespace KifuManager
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            grvListUser.DataSource = UserAccService.GetAllUser();
+            grvListUser.DataBind();
 
+            grvListTitle.DataSource = TitleService.GetAllTitle();
+            grvListTitle.DataBind();
+
+            grvListOpen.DataSource = OpeningService.GetAllOpening();
+            grvListOpen.DataBind();
         }
 
         protected void btnNewOpening_Click(object sender, EventArgs e)
@@ -28,7 +35,7 @@ namespace KifuManager
             using (StreamReader inputStreamReader = new StreamReader(fuOpening.PostedFile.InputStream))
             {
                 inputContent = inputStreamReader.ReadToEnd();
-            }         
+            }
 
             //insert new opening information
             Opening open = new Opening(openingName, openingDescription);
@@ -40,18 +47,7 @@ namespace KifuManager
             //get data
             string titleName = txtTitleName.Text;
             int titlePoint = Int32.Parse(txtTitlePoint.Text);
-
-        }
-
-        protected void btnListTitle_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        protected void btnListUser_Click(object sender, EventArgs e)
-        {
-            grvList.DataSource = UserAccService.GetUser();
-            grvList.DataBind();
+            TitleService.NewTitle(new Title(titleName, titlePoint));
         }
     }
 }

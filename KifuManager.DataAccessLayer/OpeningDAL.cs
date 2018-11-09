@@ -43,7 +43,7 @@ namespace KifuManager.DataAccessLayer
 
         public DataTable SelectPopularOpening()
         {
-            string sql = "SELECT o.OpenID, o.OpenName, o.Description, m.Amount FROM " +
+            string sql = "SELECT TOP(5) o.OpenID, o.OpenName, o.Description, m.Amount FROM " +
                 " (SELECT OpenID, COUNT(KifuID) AS Amount FROM KifuOpen " +
                 " GROUP BY OpenID) m LEFT JOIN Opening o ON m.OpenID = o.OpenID";
             return SqlHelper.ExecuteDataTable(sql);

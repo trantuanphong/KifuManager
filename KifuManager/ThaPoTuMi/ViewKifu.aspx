@@ -5,7 +5,7 @@
         { %>
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading">Upload file</div>
+            <div class="panel-heading text-center">UPLOAD FILE</div>
             <div class="panel-body">
                 <asp:FileUpload ID="fuKifu" runat="server" />
             </div>
@@ -14,7 +14,11 @@
     <% } %>
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading">Game Information</div>
+            <div class="panel-heading text-center">
+                GAME INFORMATION
+                - RATING <span class="badge">
+                    <asp:Label ID="lblRate" runat="server"></asp:Label></span>
+            </div>
             <div class="panel-body form-horizontal">
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="gameEvent">Game Event:</label>
@@ -31,7 +35,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="gameDate">Game Date:</label>
                     <div class="col-sm-8">
-                        <asp:TextBox ID="txtGameDate" runat="server" class="form-control">03/19/2018</asp:TextBox>
+                        <asp:TextBox ID="txtGameDate" runat="server" TextMode="Date" class="form-control">03/19/2018</asp:TextBox>
                     </div>
                 </div>
                 <% if (Session["user"] != null)
@@ -45,11 +49,11 @@
         </div>
     </div>
 
+    <% if (Session["user"] != null)
+        { %>
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading">
-                <asp:Label ID="lblRate" runat="server" Text="Rating: 9/10"></asp:Label>
-            </div>
+            <div class="panel-heading text-center">EVALUATE</div>
             <div class="panel-body">
                 <div class="form-group">
                     <label for="comment">
@@ -62,21 +66,23 @@
                         <asp:ListItem Text="5" Value="5"></asp:ListItem>
                     </asp:DropDownList>
                     </label>
-                    <textarea class="form-control" rows="5" id="comment" runat="server" name="txtComment"></textarea>
+                    <asp:TextBox ID="txtComment" TextMode="MultiLine" Rows="5" class="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="form-inline text-center">
-                    <asp:Button ID="btnSubmit" class="btn btn-primary" runat="server" Text="Submit" />
+                    <asp:Button ID="btnSubmit" class="btn btn-primary" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
                     <% if (IsFavour)
                         {  %>
                     <asp:Button ID="btnDisLike" class="btn btn-danger" runat="server" Text="Dislike" OnClick="btnDisLike_Click" />
-                    <%}  else { %>
+                    <%}
+                        else
+                        { %>
                     <asp:Button ID="btnLike" class="btn btn-success" runat="server" Text="Like" OnClick="btnLike_Click" />
                     <% } %>
                 </div>
             </div>
         </div>
     </div>
-
+    <% } %>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="RightContent" runat="server">
@@ -91,4 +97,18 @@
 
     <link rel="stylesheet" type="text/css" href="../wgo/wgo.player.css" />
     <div data-wgo="<%=Content%>"></div>
+
+    <br />
+    <div class="row">
+        <asp:Repeater ID="rpComment" runat="server">
+            <ItemTemplate>
+                <label><%# Eval("Username") %> - <%# Eval("TitleName") %>  <span class="badge"><%# Eval("RatePoint") %></span></label>
+                <div class="well"><%# Eval("Comment") %></div>
+            </ItemTemplate>
+            <AlternatingItemTemplate>
+                <label><%# Eval("Username") %>  <span class="badge"><%# Eval("RatePoint") %></span></label>
+                <div class="well"><%# Eval("Comment") %></div>
+            </AlternatingItemTemplate>
+        </asp:Repeater>
+    </div>
 </asp:Content>

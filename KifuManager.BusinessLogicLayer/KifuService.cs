@@ -39,15 +39,14 @@ namespace KifuManager.BusinessLogicLayer
             KifuEventDAL kifuEventDAL = new KifuEventDAL();
             for (int i = 2; i < kiEvent.Length; i++)
             {
-                string position = CommonService.GetContentInBracket(kiEvent[i], "[BW]");
-                
-                //if not match B or W i-- and continue
-
-
-                string comment = (kiEvent[i].Split('C').Length > 2) ? kiEvent[i].Split('C')[1] : "" ;
-                KifuEvent kifuEvent = new KifuEvent(position, comment);
-                kifuEventDAL.Insert(kifuEvent);
-                steps.Add(position);
+                if (kiEvent[i].Contains("B") || kiEvent[i].Contains("W"))
+                {
+                    string position = CommonService.GetContentInBracket(kiEvent[i], "[BW]");
+                    string comment = (kiEvent[i].Split('C').Length > 2) ? kiEvent[i].Split('C')[1] : "";
+                    KifuEvent kifuEvent = new KifuEvent(position, comment);
+                    kifuEventDAL.Insert(kifuEvent);
+                    steps.Add(position);
+                }   
             }
 
             int blackOpening = 0, whiteOpening = 0;
