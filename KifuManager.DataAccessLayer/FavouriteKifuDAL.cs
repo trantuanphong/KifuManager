@@ -70,7 +70,7 @@ namespace KifuManager.DataAccessLayer
 
         public DataTable SelectTopFavour()
         {
-            string sql = "SELECT TOP(5) k.KifuID, k.WhitePlayer, k.BlackPlayer, k.WhiteLevel, k.BlackLevel, k.Result " +
+            string sql = "SELECT TOP(5) k.KifuID, k.WhitePlayer, k.BlackPlayer, k.WhiteLevel, k.BlackLevel, k.Result, f.Favour " +
                 " FROM (SELECT KifuID, COUNT(Username) AS Favour FROM FavouriteKifu GROUP BY KifuID) f " +
                 " LEFT JOIN Kifu k ON f.KifuID = k.KifuID ORDER BY Favour DESC";
             return SqlHelper.ExecuteDataTable(sql);

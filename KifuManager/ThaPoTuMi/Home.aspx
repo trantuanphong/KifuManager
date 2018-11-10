@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="KifuManager._Default" %>
 
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
@@ -9,73 +11,94 @@
     </div>
 
     <div class="row">
+
+        <%--TOP POPULAR OPENING--%>
         <div class="col-md-4">
             <div class="panel-group">
                 <div class="panel panel-primary">
                     <div class="panel panel-heading text-center">TOP POPULAR OPENING</div>
                     <div class="panel panel-body">
-                        <asp:GridView ID="grvTopOpening" class="table table-striped" runat="server" AutoGenerateColumns="False">
-                            <Columns>
-                                <asp:BoundField DataField="OpenID" HeaderText="OpenID" Visible="False" />
-                                <asp:BoundField DataField="OpenName" HeaderText="Open Name" />
-                                <asp:BoundField DataField="Amount" HeaderText="Used"/>
-                                <asp:HyperLinkField DataNavigateUrlFields="OpenID" DataNavigateUrlFormatString="SearchKifu.aspx?openID={0}" HeaderText="Action" Text="<span class='glyphicon glyphicon-log-out'>" />
-                            </Columns>
-                        </asp:GridView>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Opening Name</th>
+                                    <th class="text-center">Used</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <asp:Repeater ID="rptTopOpening" runat="server">
+                                    <ItemTemplate>
+                                        <tr class="text-center">
+                                            <td><a href='SearchKifu.aspx?openID=<%#Eval("OpenID") %>'> <%#Eval("OpenName") %> </a></td>
+                                            <td><%#Eval("Amount") %></td>
+                                        </tr>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
+
+        <%--TOP FAVOURITE KIFU--%>
         <div class="col-md-4">
             <div class="panel-group">
                 <div class="panel panel-primary">
                     <div class="panel panel-heading text-center">TOP FAVOURITE KIFU</div>
                     <div class="panel panel-body">
-                        <asp:GridView ID="grvTopFavourite" class="table table-striped" runat="server" AutoGenerateColumns="False">
-                            <Columns>
-                                <asp:BoundField DataField="KifuID" HeaderText="KifuID" Visible="False" />
-                                <asp:TemplateField HeaderText="White Player">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Match</th>
+                                    <th class="text-center">Favour</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <asp:Repeater ID="rptTopFavour" runat="server">
                                     <ItemTemplate>
-                                        <%#Eval("WhitePlayer") %> (<%#Eval("WhiteLevel") %>)
+                                        <tr>
+                                            <td><a href='ViewKifu.aspx?KifuID=<%#Eval("KifuID") %>'><%#Eval("WhitePlayer") %> (<%#Eval("WhiteLevel") %>) vs <%#Eval("BlackPlayer") %> (<%#Eval("BlackLevel") %>)</a></td>
+                                            <td class="text-center"><%#Eval("Favour") %></td>
+                                        </tr>
                                     </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Black Player">
-                                    <ItemTemplate>
-                                        <%#Eval("BlackPlayer") %> (<%#Eval("BlackLevel") %>)
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:HyperLinkField DataNavigateUrlFields="KifuID" DataNavigateUrlFormatString="ViewKifu.aspx?KifuID={0}" HeaderText="Action" Text="<span class='glyphicon glyphicon-log-out'>" />
-                            </Columns>
-                        </asp:GridView>
+                                </asp:Repeater>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
+
+        <%--TOP NEW KIFU--%>
         <div class="col-md-4">
             <div class="panel-group">
                 <div class="panel panel-primary">
                     <div class="panel panel-heading text-center">TOP NEW KIFUS</div>
                     <div class="panel panel-body">
-                        <asp:GridView ID="grvTopNews" class="table table-striped" runat="server" AutoGenerateColumns="False">
-                            <Columns>
-                                <asp:BoundField DataField="KifuID" HeaderText="KifuID" Visible="False" />
-                                <asp:TemplateField HeaderText="White Player">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Match</th>
+                                    <th class="text-center">Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <asp:Repeater ID="rptTopNews" runat="server">
                                     <ItemTemplate>
-                                        <%#Eval("WhitePlayer") %> (<%#Eval("WhiteLevel") %>)
+                                        <tr>
+                                            <td><a href='ViewKifu.aspx?KifuID=<%#Eval("KifuID") %>'><%#Eval("WhitePlayer") %> (<%#Eval("WhiteLevel") %>) vs <%#Eval("BlackPlayer") %> (<%#Eval("BlackLevel") %>)</a></td>
+                                            <td><%#Eval("Result") %></td>
+                                        </tr>
                                     </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Black Player">
-                                    <ItemTemplate>
-                                        <%#Eval("BlackPlayer") %> (<%#Eval("BlackLevel") %>)
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:HyperLinkField DataNavigateUrlFields="KifuID" DataNavigateUrlFormatString="ViewKifu.aspx?KifuID={0}" HeaderText="Action" Text="<span class='glyphicon glyphicon-log-out'>" />
-                            </Columns>
-                        </asp:GridView>
+                                </asp:Repeater>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
 </asp:Content>

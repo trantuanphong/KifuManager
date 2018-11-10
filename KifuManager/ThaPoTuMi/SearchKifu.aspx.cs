@@ -15,8 +15,8 @@ namespace KifuManager
         {
             if (!IsPostBack)
             {
-                grvListKifu.DataSource = KifuService.GetAllKifu();
-                grvListKifu.DataBind();
+                rptList.DataSource = KifuService.GetAllKifu();
+                rptList.DataBind();
 
                 drOpen.DataSource = KifuService.GetOpening();
                 drOpen.DataTextField = "OpenName";
@@ -27,7 +27,7 @@ namespace KifuManager
             if (Request.QueryString["openID"] != null)
             {
                 SearchByOpening(Request.QueryString["openID"]);
-                grvListKifu.DataBind();
+                rptList.DataBind();
             }
         }
 
@@ -35,13 +35,14 @@ namespace KifuManager
         {
             if (cbOpening.Checked && !drOpen.SelectedValue.Equals(""))
                 SearchByOpening(drOpen.SelectedValue);
-            else grvListKifu.DataSource = KifuService.SearchKifu(txtGameName.Text, txtPlayerName.Text, drRank.SelectedValue);
-            grvListKifu.DataBind();
+            else rptList.DataSource = KifuService.SearchKifu(txtGameName.Text, txtPlayerName.Text, drRank.SelectedValue);
+            rptList.DataBind();
         }
 
         private void SearchByOpening(string openID)
         {
-            grvListKifu.DataSource = KifuService.SearchKifuWithOpen(txtGameName.Text, txtPlayerName.Text, drRank.SelectedValue, openID);
+            rptList.DataSource = KifuService.SearchKifuWithOpen(txtGameName.Text, txtPlayerName.Text, drRank.SelectedValue, openID);
         }
+
     }
 }

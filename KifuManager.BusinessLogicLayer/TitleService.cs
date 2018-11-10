@@ -25,5 +25,13 @@ namespace KifuManager.BusinessLogicLayer
         {
             return new TitleDAL().SelectTitleSuitable(point);
         }
+
+        public static int DeleteTitle(string titleID)
+        {
+            int id;
+            if (Int32.TryParse(titleID, out id))
+                return new TitleDAL().Delete(id);
+            return 0;
+        }
     }
 }

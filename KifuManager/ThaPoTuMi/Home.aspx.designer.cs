@@ -13,30 +13,30 @@ namespace KifuManager {
     public partial class _Default {
         
         /// <summary>
-        /// grvTopOpening control.
+        /// rptTopOpening control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvTopOpening;
+        protected global::System.Web.UI.WebControls.Repeater rptTopOpening;
         
         /// <summary>
-        /// grvTopFavourite control.
+        /// rptTopFavour control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvTopFavourite;
+        protected global::System.Web.UI.WebControls.Repeater rptTopFavour;
         
         /// <summary>
-        /// grvTopNews control.
+        /// rptTopNews control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvTopNews;
+        protected global::System.Web.UI.WebControls.Repeater rptTopNews;
     }
 }

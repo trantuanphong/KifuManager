@@ -76,30 +76,30 @@ namespace KifuManager {
         protected global::System.Web.UI.WebControls.Button btnNewTitle;
         
         /// <summary>
-        /// grvListUser control.
+        /// rptListUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvListUser;
+        protected global::System.Web.UI.WebControls.Repeater rptListUser;
         
         /// <summary>
-        /// grvListTitle control.
+        /// rptListTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvListTitle;
+        protected global::System.Web.UI.WebControls.Repeater rptListTitle;
         
         /// <summary>
-        /// grvListOpen control.
+        /// rptListOpen control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvListOpen;
+        protected global::System.Web.UI.WebControls.Repeater rptListOpen;
     }
 }

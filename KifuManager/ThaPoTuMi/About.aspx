@@ -5,6 +5,37 @@
     <h3>Your application description page.</h3>
     <p>Use this area to provide additional information.</p>
     <div class="row">
-
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="../image/thanh.jpg" alt="Tha">
+                <div class="caption">
+                    <h3>Nguyen Tien Thanh</h3>
+                </div>
+            </div>
+        </div>        
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="../image/phong.jpg" alt="Po">
+                <div class="caption">
+                    <h3>Tran Tuan Phong</h3>
+                </div>
+            </div>
+        </div>        
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="../image/tuan.jpg" alt="Tu">
+                <div class="caption">
+                    <h3>Bui Quoc Tuan</h3>
+                </div>
+            </div>
+        </div>        
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="../image/minh.jpg" alt="Mi">
+                <div class="caption">
+                    <h3>Vu Quang Minh</h3>
+                </div>
+            </div>
+        </div>
     </div>
 </asp:Content>

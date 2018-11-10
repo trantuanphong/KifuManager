@@ -14,14 +14,14 @@ namespace KifuManager
         {
             if (!IsPostBack)
             {
-                grvTopNews.DataSource = KifuService.GetTopNewKifu();
-                grvTopNews.DataBind();
+                rptTopNews.DataSource = KifuService.GetTopNewKifu();
+                rptTopNews.DataBind();
 
-                grvTopFavourite.DataSource = FavouriteKifuService.GetTopFavouriteKifu();
-                grvTopFavourite.DataBind();
+                rptTopFavour.DataSource = FavouriteKifuService.GetTopFavouriteKifu();
+                rptTopFavour.DataBind();
 
-                grvTopOpening.DataSource = OpeningService.GetPopularOpening();
-                grvTopOpening.DataBind();
+                rptTopOpening.DataSource = OpeningService.GetPopularOpening();
+                rptTopOpening.DataBind();
             }
         }
     }

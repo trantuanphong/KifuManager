@@ -15,14 +15,17 @@ namespace KifuManager
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            grvListUser.DataSource = UserAccService.GetAllUser();
-            grvListUser.DataBind();
+            if (Request.QueryString["deleteTitle"] != null)
+                DeleteTitle(Request.QueryString["deleteTitle"].ToString());
 
-            grvListTitle.DataSource = TitleService.GetAllTitle();
-            grvListTitle.DataBind();
+            rptListUser.DataSource = UserAccService.GetAllUser();
+            rptListUser.DataBind();
 
-            grvListOpen.DataSource = OpeningService.GetAllOpening();
-            grvListOpen.DataBind();
+            rptListTitle.DataSource = TitleService.GetAllTitle();
+            rptListTitle.DataBind();
+
+            rptListOpen.DataSource = OpeningService.GetAllOpening();
+            rptListOpen.DataBind();
         }
 
         protected void btnNewOpening_Click(object sender, EventArgs e)
@@ -48,6 +51,11 @@ namespace KifuManager
             string titleName = txtTitleName.Text;
             int titlePoint = Int32.Parse(txtTitlePoint.Text);
             TitleService.NewTitle(new Title(titleName, titlePoint));
+        }
+
+        private void DeleteTitle(string titleID)
+        {
+            TitleService.DeleteTitle(titleID);
         }
     }
 }

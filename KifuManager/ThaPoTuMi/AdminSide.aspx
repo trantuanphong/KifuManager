@@ -53,21 +53,32 @@
         <div class="panel panel-primary">
             <div class="panel-heading text-center">LIST ACCOUNT</div>
             <div class="panel-body">
-                <asp:GridView ID="grvListUser" class="table table-striped" runat="server" AutoGenerateColumns="False">
-                    <Columns>
-                        <asp:BoundField DataField="Username" HeaderText="Username" />
-                        <asp:BoundField DataField="Email" HeaderText="Email" />
-                        <asp:BoundField DataField="APoint" HeaderText="Point" />
-                        <asp:BoundField DataField="Status" HeaderText="Status" />
-                        <asp:BoundField DataField="Type" HeaderText="Type" />
-                        <asp:TemplateField HeaderText="Action">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Point</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <asp:Repeater ID="rptListUser" runat="server">
                             <ItemTemplate>
-                                <asp:HyperLink ID="hlReset" runat="server" NavigateUrl='<%# Eval("Username") %>' Text="Reset"></asp:HyperLink>
-                                <asp:HyperLink ID="hlBan" runat="server" NavigateUrl='<%# Eval("Username") %>' Text="Ban"></asp:HyperLink>
+                                <tr>
+                                    <td><%#Eval("Username") %></td>
+                                    <td><%#Eval("Email") %></td>
+                                    <td><%#Eval("APoint") %></td>
+                                    <td><%#Eval("Type").Equals("1") ? "Admin" : "User" %></td>
+                                    <td><%#Eval("Status").Equals("1")? "Actived" : "Banned" %></td>
+                                    <td></td>
+                                </tr>
                             </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
+                        </asp:Repeater>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -77,18 +88,28 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading text-center">LIST TITLE</div>
                     <div class="panel-body">
-                        <asp:GridView ID="grvListTitle" class="table table-striped" runat="server" AutoGenerateColumns="False">
-                            <Columns>
-                                <asp:BoundField DataField="TitleID" HeaderText="TitleID"/>
-                                <asp:BoundField DataField="TitleName" HeaderText="Title Name" />
-                                <asp:BoundField DataField="Point" HeaderText="Point" />
-                                <asp:TemplateField HeaderText="Action">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>TitleID</th>
+                                    <th>Title Name</th>
+                                    <th>Point</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <asp:Repeater ID="rptListTitle" runat="server">
                                     <ItemTemplate>
-                                        <asp:HyperLink ID="hlDeleteTitle" runat="server" NavigateUrl='<%# Eval("TitleID") %>' Text="Delete"></asp:HyperLink>
+                                        <tr>
+                                            <td><%#Eval("TitleID") %></td>
+                                            <td><%#Eval("TitleName") %></td>
+                                            <td><%#Eval("Point") %></td>
+                                            <td><a href='AdminSide.aspx?deleteTitle=<%#Eval("TitleID") %>'>Delete</a></td>
+                                        </tr>
                                     </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
-                        </asp:GridView>
+                                </asp:Repeater>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -98,17 +119,26 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading text-center">LIST OPENING</div>
                     <div class="panel-body">
-                        <asp:GridView ID="grvListOpen" class="table table-striped" runat="server" AutoGenerateColumns="False">
-                            <Columns>
-                                <asp:BoundField DataField="OpenID" HeaderText="OpenID"/>
-                                <asp:BoundField DataField="OpenName" HeaderText="Open Name" />
-                                <asp:TemplateField HeaderText="Action">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>OpenID</th>
+                                    <th>Open Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <asp:Repeater ID="rptListOpen" runat="server">
                                     <ItemTemplate>
-                                        <asp:HyperLink ID="hlDeleteOpen" runat="server" NavigateUrl='<%# Eval("OpenID") %>' Text="Delete"></asp:HyperLink>
+                                        <tr>
+                                            <td><%#Eval("OpenID") %></td>
+                                            <td><%#Eval("OpenName") %></td>
+                                            <td><a href='AdminSide.aspx?deleteOpen=<%#Eval("OpenID") %>'>Delete</a></td>
+                                        </tr>
                                     </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
-                        </asp:GridView>
+                                </asp:Repeater>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

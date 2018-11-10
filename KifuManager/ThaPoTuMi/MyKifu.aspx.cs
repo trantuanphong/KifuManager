@@ -21,7 +21,8 @@ namespace KifuManager
 
             if (!IsPostBack)
             {
-
+                rptList.DataSource = KifuService.GetMyKifu(Session["user"].ToString());
+                rptList.DataBind();
             }
         }
 
@@ -43,14 +44,14 @@ namespace KifuManager
 
         protected void btnListMyKifu_Click(object sender, EventArgs e)
         {
-            grvList.DataSource = KifuService.GetMyKifu(Session["user"].ToString());
-            grvList.DataBind();
+            rptList.DataSource = KifuService.GetMyKifu(Session["user"].ToString());
+            rptList.DataBind();
         }
 
         protected void btnListFavorKifu_Click(object sender, EventArgs e)
         {
-            grvList.DataSource = FavouriteKifuService.GetFavouriteKifu(Session["user"].ToString());
-            grvList.DataBind();
+            rptList.DataSource = FavouriteKifuService.GetFavouriteKifu(Session["user"].ToString());
+            rptList.DataBind();
         }
     }
 }

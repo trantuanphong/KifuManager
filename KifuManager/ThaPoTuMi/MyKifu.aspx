@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="LeftContent" runat="server">
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading">New Kifu</div>
+            <div class="panel-heading text-center">NEW KIFU</div>
             <div class="panel-body">
                 <asp:FileUpload ID="KifuUpload" runat="server" /><br />
                 <div class="text-center">
@@ -23,28 +23,32 @@
 
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading">List My Kifu</div>
+            <div class="panel-heading text-center">LIST KIFU</div>
             <div class="panel-body">
-                <asp:GridView class="table table-striped" ID="grvList" runat="server" AllowPaging="True" BorderStyle="None" AutoGenerateColumns="False">
-                    <Columns>
-                        <asp:BoundField DataField="KifuID" HeaderText="KifuID" Visible="False" />
-                        <asp:BoundField DataField="GameName" HeaderText="Game Name" />
-                        <asp:BoundField DataField="Event" HeaderText="Event" />
-                        <asp:TemplateField HeaderText="White Player">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Event</th>
+                            <th>Game Name</th>
+                            <th class="text-center">Players</th>
+                            <th>Result</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <asp:Repeater ID="rptList" runat="server">
                             <ItemTemplate>
-                                <%#Eval("WhitePlayer") %> (<%#Eval("WhiteLevel") %>)
+                                <tr>
+                                    <td><%#Eval("Event") %></td>
+                                    <td><%#Eval("GameName") %></td>
+                                    <td><a href='ViewKifu.aspx?KifuID=<%#Eval("KifuID") %>'><%#Eval("WhitePlayer") %> (<%#Eval("WhiteLevel") %>) vs <%#Eval("BlackPlayer") %> (<%#Eval("BlackLevel") %>)</a></td>
+                                    <td><%#Eval("Result") %></td>
+                                    <td><%#Eval("Date","{0:d}") %></td>
+                                </tr>
                             </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Black Player">
-                            <ItemTemplate>
-                                <%#Eval("BlackPlayer") %> (<%#Eval("BlackLevel") %>)
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:BoundField DataField="Result" DataFormatString="{0}" HeaderText="Result" />
-                        <asp:BoundField DataField="Date" DataFormatString="{0:d}" HeaderText="Date" />
-                        <asp:HyperLinkField DataNavigateUrlFields="KifuID" DataNavigateUrlFormatString="ViewKifu.aspx?KifuID={0}" HeaderText="Action" Text="View" />
-                    </Columns>
-                </asp:GridView>
+                        </asp:Repeater>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
