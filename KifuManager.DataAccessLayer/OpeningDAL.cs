@@ -48,5 +48,13 @@ namespace KifuManager.DataAccessLayer
                 " GROUP BY OpenID) m LEFT JOIN Opening o ON m.OpenID = o.OpenID";
             return SqlHelper.ExecuteDataTable(sql);
         }
+
+        public DataTable SelectOpeningByID(int id)
+        {
+            string sql = "SELECT * FROM Opening WHERE OpeningID = @openID";
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@openID", id);
+            return SqlHelper.ExecuteDataTable(sql, parameters);
+        }
     }
 }

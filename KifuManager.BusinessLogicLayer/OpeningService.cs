@@ -26,11 +26,15 @@ namespace KifuManager.BusinessLogicLayer
             return 0;
         }
 
-        public static int DeleteOpening(int openID)
+        public static int DeleteOpening(string openID)
         {
-            new KifuOpenDAL().Delete(openID);
-            new OpeningSequenceDAL().Delete(openID);
-            new OpeningDAL().Delete(openID);
+            int id;
+            if (Int32.TryParse(openID, out id))
+            {
+                new KifuOpenDAL().Delete(id);
+                new OpeningSequenceDAL().Delete(id);
+                new OpeningDAL().Delete(id);
+            }
             return 0;
         }
 

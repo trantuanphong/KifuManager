@@ -1,7 +1,9 @@
 ﻿using KifuManager.BusinessLogicLayer;
 using KifuManager.Entity;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -26,6 +28,12 @@ namespace KifuManager
                 favourite = new FavouriteKifu(KifuID, Session["user"].ToString());
                 IsFavour = FavouriteKifuService.IsFavour(favourite);
             }
+            else
+            {
+                txtGameName.ReadOnly = true;
+                txtGameEvent.ReadOnly = true;
+                txtGameDate.ReadOnly = true;
+            }
             if (!IsPostBack)
             {
                 Content = KifuService.GetKifuContent(KifuID);
@@ -37,6 +45,7 @@ namespace KifuManager
             rpComment.DataBind();
 
             lblRate.Text = FavouriteKifuService.GroupPointOfKifu(KifuID) + "/5";
+            GetOpen();
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -65,5 +74,34 @@ namespace KifuManager
             FavouriteKifuService.RatingAndCommnent(kifuRating);
         }
 
+        protected void btnIdentify_Click(object sender, EventArgs e)
+        {
+            ArrayList steps = KifuService.GetKifuStep(KifuID);
+            string blackPlayer = CommonService.GetContentInBracket(Content, "PB");
+            string whitePlayer = CommonService.GetContentInBracket(Content, "PW");
+            KifuService.IdentifyOpening(KifuID, steps, blackPlayer, whitePlayer);
+        }
+
+        private void GetOpen()
+        {
+            string blackPlayer = CommonService.GetContentInBracket(Content, "PB");
+            string whitePlayer = CommonService.GetContentInBracket(Content, "PW");
+            foreach (DataRow row in KifuService.GetKifuOpen(KifuID).Rows)
+            {
+                if (row["Player"].Equals(blackPlayer))
+                {
+                    txtBlackOpen.Text = row["OpenName"].ToString();
+                } else if (row["Player"].Equals(whitePlayer))
+                {
+                    txtWhiteOpen.Text = row["OpenName"].ToString();
+                }
+            }
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (Request.QueryString["KifuID"] != null)
+                KifuService.DeleteKifu(Request.QueryString["KifuID"].ToString());
+        }
     }
 }

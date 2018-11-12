@@ -90,12 +90,11 @@ namespace KifuManager.DataAccessLayer
             return SqlHelper.ExecuteNonQuery(sql, parameters);
         }
 
-        public int RemoveTitle(string username, int titleID)
+        public int RemoveTitle(string username)
         {
-            string sql = "UPDATE UserAcc SET TitleID=NULL WHERE TitleID=@titleID AND Username=@username";
-            SqlParameter[] parameters = new SqlParameter[2];
-            parameters[0] = new SqlParameter("@titleID", titleID);
-            parameters[1] = new SqlParameter("@username", username);
+            string sql = "UPDATE UserAcc SET TitleID=NULL WHERE Username=@username";
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@username", username);
             return SqlHelper.ExecuteNonQuery(sql, parameters);
         }
 
@@ -104,6 +103,32 @@ namespace KifuManager.DataAccessLayer
             string sql = "UPDATE UserAcc SET TitleID=@titleID WHERE Username=@username";
             SqlParameter[] parameters = new SqlParameter[2];
             parameters[0] = new SqlParameter("@titleID", titleID);
+            parameters[1] = new SqlParameter("@username", username);
+            return SqlHelper.ExecuteNonQuery(sql, parameters);
+        }
+
+        public int UpdatePassword(string username, string password)
+        {
+            string sql = "UPDATE UserAcc SET Password=@password WHERE Username=@username";
+            SqlParameter[] parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@password", password);
+            parameters[1] = new SqlParameter("@username", username);
+            return SqlHelper.ExecuteNonQuery(sql, parameters);
+        }
+
+        public int ChangeStatus(string username)
+        {
+            string sql = "UPDATE UserAcc SET [Status] = [Status] ^ 1 WHERE Username=@username";
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@username", username);
+            return SqlHelper.ExecuteNonQuery(sql, parameters);
+        }
+
+        public int UpdateEmail(string username, string email)
+        {
+            string sql = "UPDATE UserAcc SET Email=@email WHERE Username=@username";
+            SqlParameter[] parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@email", email);
             parameters[1] = new SqlParameter("@username", username);
             return SqlHelper.ExecuteNonQuery(sql, parameters);
         }

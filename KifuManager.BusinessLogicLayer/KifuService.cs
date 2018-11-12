@@ -33,6 +33,7 @@ namespace KifuManager.BusinessLogicLayer
 
             new KifuDAL().Insert(kifu);
 
+
             //insert kifu event
             string[] kiEvent = kifuContent.Split(';');
             ArrayList steps = new ArrayList();
@@ -46,17 +47,41 @@ namespace KifuManager.BusinessLogicLayer
                     KifuEvent kifuEvent = new KifuEvent(position, comment);
                     kifuEventDAL.Insert(kifuEvent);
                     steps.Add(position);
-                }   
+                }
             }
 
-            int blackOpening = 0, whiteOpening = 0;
+            int kifuID = GetLastKifuID();
+            IdentifyOpening(kifuID, steps, blackPlayer, whitePlayer);
 
+            return 0;
+        }
+
+        public static int GetLastKifuID()
+        {
+            DataTable dt = new KifuDAL().SelectLast();
+            return Int32.Parse(dt.Rows[0]["KifuID"].ToString());
+        }
+
+        public static ArrayList GetKifuStep(int kifuID)
+        {
+            DataTable eventInformation = new KifuEventDAL().SelectByID(kifuID);
+            ArrayList steps = new ArrayList();
+            for (int i = 0; i < eventInformation.Rows.Count; i++)
+            {
+                steps.Add(eventInformation.Rows[i][2]);
+            }
+            return steps;
+        }
+
+        public static int IdentifyOpening(int kifuID, ArrayList steps, string blackPlayer, string whitePlayer)
+        {
+            int blackOpening = 0, whiteOpening = 0;
             //define opening
-            foreach(DataRow row in (new OpeningDAL().SelectAll()).Rows)
+            foreach (DataRow row in (new OpeningDAL().SelectAll()).Rows)
             {
                 int id = Int32.Parse(row["OpenID"].ToString());
                 ArrayList openStep = new ArrayList();
-                foreach(DataRow row2 in (new OpeningSequenceDAL().SelectByID(id).Rows))
+                foreach (DataRow row2 in (new OpeningSequenceDAL().SelectByID(id).Rows))
                 {
                     openStep.Add(row2["Position"].ToString());
                 }
@@ -72,8 +97,8 @@ namespace KifuManager.BusinessLogicLayer
             }
 
             //insert into kifu open
-            if (blackOpening != 0) new KifuOpenDAL().Insert(new KifuOpen(blackOpening, blackPlayer));
-            if (whiteOpening != 0) new KifuOpenDAL().Insert(new KifuOpen(whiteOpening, whitePlayer));
+            if (blackOpening != 0) new KifuOpenDAL().Insert(new KifuOpen(kifuID, blackOpening, blackPlayer));
+            if (whiteOpening != 0) new KifuOpenDAL().Insert(new KifuOpen(kifuID, whiteOpening, whitePlayer));
 
             return 0;
         }
@@ -137,13 +162,22 @@ namespace KifuManager.BusinessLogicLayer
             return new OpeningDAL().SelectAll();
         }
 
-        public static int DeleteKifu(int kifuID)
+        public static int DeleteKifu(string kifuID)
         {
-            new KifuRatingDAL().Delete(kifuID);
-            new FavouriteKifuDAL().Delete(kifuID);
-            new KifuEventDAL().Delete(kifuID);
-            new KifuDAL().Delete(kifuID);
+            int id;
+            if (Int32.TryParse(kifuID, out id))
+            {
+                new KifuRatingDAL().Delete(id);
+                new FavouriteKifuDAL().Delete(id);
+                new KifuEventDAL().Delete(id);
+                new KifuDAL().Delete(id);
+            }
             return 0;
+        }
+
+        public static DataTable GetKifuOpen(int kifuID)
+        {
+            return new KifuOpenDAL().SelectByID(kifuID);
         }
     }
 }

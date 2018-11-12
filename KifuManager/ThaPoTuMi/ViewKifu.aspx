@@ -1,17 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TwoRowSite.master" AutoEventWireup="true" CodeBehind="ViewKifu.aspx.cs" Inherits="KifuManager.ViewKifu" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="LeftContent" runat="server">
-    <% if (Session["user"] != null)
-        { %>
-    <div class="panel-group">
-        <div class="panel panel-primary">
-            <div class="panel-heading text-center">UPLOAD FILE</div>
-            <div class="panel-body">
-                <asp:FileUpload ID="fuKifu" runat="server" />
-            </div>
-        </div>
-    </div>
-    <% } %>
     <div class="panel-group">
         <div class="panel panel-primary">
             <div class="panel-heading text-center">
@@ -20,6 +9,18 @@
                     <asp:Label ID="lblRate" runat="server"></asp:Label></span>
             </div>
             <div class="panel-body form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="txtBlackOpen">Black Open:</label>
+                    <div class="col-sm-8">
+                        <asp:TextBox ID="txtBlackOpen" runat="server" ReadOnly="true" class="form-control"></asp:TextBox>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="txtWhiteOpen">White Open:</label>
+                    <div class="col-sm-8">
+                        <asp:TextBox ID="txtWhiteOpen" runat="server" ReadOnly="true" class="form-control"></asp:TextBox>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="gameEvent">Game Event:</label>
                     <div class="col-sm-8">
@@ -42,7 +43,8 @@
                     { %>
                 <div class="form-inline text-center">
                     <asp:Button ID="btnSave" class="btn btn-primary" runat="server" Text="Save" OnClick="btnSave_Click" />
-                    <asp:Button ID="btnDelete" class="btn btn-danger" runat="server" Text="Delete" />
+                    <asp:Button ID="btnDelete" class="btn btn-danger" runat="server" Text="Delete" OnClick="btnDelete_Click" />
+                    <asp:Button ID="btnIdentify" class="btn btn-primary" runat="server" Text="Identify Opening" OnClick="btnIdentify_Click" />
                 </div>
                 <% } %>
             </div>

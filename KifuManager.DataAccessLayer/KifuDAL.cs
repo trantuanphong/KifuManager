@@ -113,5 +113,10 @@ namespace KifuManager.DataAccessLayer
             return SqlHelper.ExecuteDataTable(sql);
         }
 
+        public DataTable SelectLast()
+        {
+            string sql = "SELECT TOP(1) * FROM Kifu ORDER BY KifuID DESC";
+            return SqlHelper.ExecuteDataTable(sql);
+        }
     }
 }

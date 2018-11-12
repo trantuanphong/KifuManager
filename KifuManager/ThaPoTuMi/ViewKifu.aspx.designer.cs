@@ -13,15 +13,6 @@ namespace KifuManager {
     public partial class ViewKifu {
         
         /// <summary>
-        /// fuKifu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fuKifu;
-        
-        /// <summary>
         /// lblRate control.
         /// </summary>
         /// <remarks>
@@ -29,6 +20,24 @@ namespace KifuManager {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblRate;
+        
+        /// <summary>
+        /// txtBlackOpen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBlackOpen;
+        
+        /// <summary>
+        /// txtWhiteOpen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtWhiteOpen;
         
         /// <summary>
         /// txtGameEvent control.
@@ -74,6 +83,15 @@ namespace KifuManager {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDelete;
+        
+        /// <summary>
+        /// btnIdentify control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnIdentify;
         
         /// <summary>
         /// drRate control.

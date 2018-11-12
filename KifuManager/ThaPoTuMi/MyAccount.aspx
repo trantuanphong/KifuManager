@@ -11,10 +11,10 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <label for="txtEmail">Email:</label>
-                                <asp:TextBox ID="txtEmail" TextMode="Email" class="form-control" required="true" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtEmail" TextMode="Email" class="form-control" runat="server"></asp:TextBox>
                             </div>
                             <div class="form-group text-center">
-                                <asp:Button ID="btnChangeEmail" class="btn btn-primary" runat="server" Text="Change Email" />
+                                <asp:Button ID="btnChangeEmail" class="btn btn-primary" runat="server" Text="Change Email" OnClick="btnChangeEmail_Click" />
                             </div>
                         </div>
                     </div>
@@ -25,12 +25,12 @@
                         <div class="panel-body">
                             <label><asp:Label ID="lbPoint" runat="server" Text="Label"></asp:Label></label>
                             <div class="form-group">
-                                <label for="txtEmail">Title:</label>
+                                <label for="drTitle">Title: </label>
                                 <asp:DropDownList ID="drTitle" class="form-control" runat="server"></asp:DropDownList>
                             </div>
                             <div class="form-inline text-center">
                                 <asp:Button ID="btnChangeTitle" class="btn btn-primary" runat="server" Text="Change Title" OnClick="btnChangeTitle_Click" />
-                                <asp:Button ID="btnRemoveTitle" class="btn btn-primary" runat="server" Text="Remove Title" />
+                                <asp:Button ID="btnRemoveTitle" class="btn btn-primary" runat="server" Text="Remove Title" OnClick="btnRemoveTitle_Click" />
                             </div>
                         </div>
                     </div>
@@ -44,18 +44,18 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <label for="txtOldPassword">Old Password:</label>
-                                <asp:TextBox ID="txtOldPassword" class="form-control" required="true" type="password" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtOldPassword" class="form-control" type="password" runat="server"></asp:TextBox>
                             </div>                            
                             <div class="form-group">
                                 <label for="txtNewPassword">New Password:</label>
-                                <asp:TextBox ID="txtNewPassword" class="form-control" required="true" type="password" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtNewPassword" class="form-control" type="password" runat="server"></asp:TextBox>
                             </div>
                             <div class="form-group">
                                 <label for="txtRetypePassword">Retype Password:</label>
-                                <asp:TextBox ID="txtRetypePassword" class="form-control" required="true" type="password" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtRetypePassword" class="form-control" type="password" runat="server"></asp:TextBox>
                             </div>
                             <div class="form-group text-center">
-                                <asp:Button ID="btnChangePassword" class="btn btn-primary" runat="server" Text="Change Password" />
+                                <asp:Button ID="btnChangePassword" class="btn btn-primary" runat="server" Text="Change Password" OnClick="btnChangePassword_Click" />
                             </div>
                         </div>
                     </div>
