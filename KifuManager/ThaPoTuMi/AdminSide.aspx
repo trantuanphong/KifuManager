@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="LeftContent" runat="server">
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading">New Opening</div>
+            <div class="panel-heading text-center">NEW OPENING</div>
             <div class="panel-body form-horizontal">
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="txtOpenName">Open Name:</label>
@@ -26,7 +26,7 @@
     </div>
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading">New Title</div>
+            <div class="panel-heading text-center">NEW TITLE</div>
             <div class="panel-body form-horizontal">
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="txtTitleName">Title Name:</label>

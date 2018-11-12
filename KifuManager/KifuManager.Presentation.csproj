@@ -106,6 +106,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Database.sql" />
+    <Content Include="image\image2.jpg" />
+    <Content Include="image\image1.jpg" />
+    <Content Include="image\image3.jpg" />
     <Content Include="image\minh.jpg" />
     <Content Include="image\phong.jpg" />
     <Content Include="image\thanh.jpg" />
@@ -173,6 +177,7 @@
     <Content Include="wgo\wood1.jpg" />
     <Content Include="wgo\wood_1024.jpg" />
     <Content Include="wgo\wood_512.jpg" />
+    <None Include="Properties\PublishProfiles\ThaPoTuMi - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

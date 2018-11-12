@@ -10,7 +10,7 @@
                 <img src="../image/thanh.jpg" alt="Tha">
                 <div class="caption">
                     <h3>Nguyen Tien Thanh</h3>
-                    <p>Database Designer</p>
+                    <p>Prototype Designer</p>
                 </div>
             </div>
         </div>        
@@ -28,7 +28,7 @@
                 <img src="../image/tuan.jpg" alt="Tu">
                 <div class="caption">
                     <h3>Bui Quoc Tuan</h3>
-                    <p>Prototype Designer</p>
+                    <p>Database Designer</p>
                 </div>
             </div>
         </div>        
