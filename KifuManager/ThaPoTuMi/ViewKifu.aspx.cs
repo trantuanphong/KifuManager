@@ -16,6 +16,7 @@ namespace KifuManager
         public String Content { get; set; }
         public int KifuID { get; set; }
         public Boolean IsFavour { get; set; }
+        public Boolean IsOwnKifu { get; set; }
 
         private FavouriteKifu favourite;
 
@@ -23,12 +24,14 @@ namespace KifuManager
         {
             KifuID = Int32.Parse(Request.QueryString["KifuID"]);
             Content = KifuService.GetKifuContent(KifuID);
+            IsOwnKifu = false;
             if (Session["user"] != null)
             {
                 favourite = new FavouriteKifu(KifuID, Session["user"].ToString());
                 IsFavour = FavouriteKifuService.IsFavour(favourite);
+                IsOwnKifu = KifuService.IsOwnKifu(Session["user"].ToString(), KifuID);
             }
-            else
+            if (!IsOwnKifu)
             {
                 txtGameName.ReadOnly = true;
                 txtGameEvent.ReadOnly = true;
@@ -101,7 +104,10 @@ namespace KifuManager
         protected void btnDelete_Click(object sender, EventArgs e)
         {
             if (Request.QueryString["KifuID"] != null)
+            {
                 KifuService.DeleteKifu(Request.QueryString["KifuID"].ToString());
+                Response.Redirect("~/ThaPoTuMi/Home");
+            }
         }
     }
 }

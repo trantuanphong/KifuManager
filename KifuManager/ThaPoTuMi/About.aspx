@@ -10,7 +10,6 @@
                 <img src="../image/thanh.jpg" alt="Tha">
                 <div class="caption">
                     <h3>Nguyen Tien Thanh</h3>
-                    <p>Prototype Designer</p>
                 </div>
             </div>
         </div>        
@@ -19,7 +18,6 @@
                 <img src="../image/phong.jpg" alt="Po">
                 <div class="caption">
                     <h3>Tran Tuan Phong</h3>
-                    <p>Architecture Designer</p>
                 </div>
             </div>
         </div>        
@@ -28,7 +26,6 @@
                 <img src="../image/tuan.jpg" alt="Tu">
                 <div class="caption">
                     <h3>Bui Quoc Tuan</h3>
-                    <p>Database Designer</p>
                 </div>
             </div>
         </div>        
@@ -37,7 +34,6 @@
                 <img src="../image/minh.jpg" alt="Mi">
                 <div class="caption">
                     <h3>Vu Quang Minh</h3>
-                    <p>Algorithm Designer</p>
                 </div>
             </div>
         </div>

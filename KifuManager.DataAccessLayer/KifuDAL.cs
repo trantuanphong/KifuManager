@@ -118,5 +118,15 @@ namespace KifuManager.DataAccessLayer
             string sql = "SELECT TOP(1) * FROM Kifu ORDER BY KifuID DESC";
             return SqlHelper.ExecuteDataTable(sql);
         }
+
+        public DataTable SelectByUploaderAndID(string uploader, int kifuID)
+        {
+            string sql = "SELECT k.KifuID, k.GameName, k.Event, k.WhitePlayer, k.WhiteLevel, k.BlackPlayer, k.BlackLevel, k.Result, k.Date " +
+            " FROM Kifu k WHERE Uploader = @uploader AND KifuID = @kifuID";
+            SqlParameter[] parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@uploader", uploader);
+            parameters[1] = new SqlParameter("@kifuID", kifuID);
+            return SqlHelper.ExecuteDataTable(sql, parameters);
+        }
     }
 }

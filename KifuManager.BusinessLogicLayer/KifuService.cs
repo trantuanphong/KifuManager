@@ -179,5 +179,10 @@ namespace KifuManager.BusinessLogicLayer
         {
             return new KifuOpenDAL().SelectByID(kifuID);
         }
+
+        public static Boolean IsOwnKifu(string username, int kifuID)
+        {
+            return new KifuDAL().SelectByUploaderAndID(username, kifuID).Rows.Count > 0;
+        }
     }
 }

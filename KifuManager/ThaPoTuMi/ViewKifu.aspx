@@ -39,7 +39,7 @@
                         <asp:TextBox ID="txtGameDate" runat="server" TextMode="Date" class="form-control">03/19/2018</asp:TextBox>
                     </div>
                 </div>
-                <% if (Session["user"] != null)
+                <% if (IsOwnKifu)
                     { %>
                 <div class="form-inline text-center">
                     <asp:Button ID="btnSave" class="btn btn-primary" runat="server" Text="Save" OnClick="btnSave_Click" />
