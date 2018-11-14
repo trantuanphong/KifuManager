@@ -15,7 +15,7 @@ namespace KifuManager.BusinessLogicLayer
         public static int CheckLogin(string username, string password)
         {
             UserAcc user = dal.GetUserByName(username);
-            if (user == null || !user.Password.Equals(password)) return 0;
+            if (user == null || !user.Password.Equals(password) || !user.Status) return 0;
             return 1;
         }
         public static Boolean IsExist(string username)

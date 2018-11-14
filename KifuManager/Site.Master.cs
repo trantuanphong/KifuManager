@@ -17,6 +17,7 @@ namespace KifuManager
         protected void btnLogOut_Click(object sender, EventArgs e)
         {
             Session["user"] = null;
+            Session["type"] = null;
             Response.Redirect("~/ThaPoTuMi/Home");
         }
     }

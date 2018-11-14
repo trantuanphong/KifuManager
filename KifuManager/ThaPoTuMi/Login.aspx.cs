@@ -18,13 +18,14 @@ namespace KifuManager.ThaPoTuMi
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            UserAcc user = new UserAcc();
             string username = txtUserName1.Text;
             string password = txtPassword1.Text;
             int isLogin = UserAccService.CheckLogin(username, password);
             if (isLogin == 1)
             {
+                UserAcc user = UserAccService.GetUser(username);
                 Session["user"] = username;
+                Session["type"] = user.Type;
                 Response.Redirect("~/ThaPoTuMi/Home");
             }
             else
