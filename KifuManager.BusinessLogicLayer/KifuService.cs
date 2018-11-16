@@ -28,8 +28,8 @@ namespace KifuManager.BusinessLogicLayer
             if (date.Equals("")) date = DateTime.Now.ToShortDateString();
             string result = CommonService.GetContentInBracket(kifuContent, "RE");
 
-            Kifu kifu = new Kifu(rule,Int32.Parse(size),float.Parse(komi),gameName,gameEvent,
-                whitePlayer, blackPlayer,whiteLevel,blackLevel,DateTime.Parse(date),result,username);
+            Kifu kifu = new Kifu(rule, Int32.Parse(size), float.Parse(komi), gameName, gameEvent,
+                whitePlayer, blackPlayer, whiteLevel, blackLevel, DateTime.Parse(date), result, username);
 
             new KifuDAL().Insert(kifu);
 
@@ -130,11 +130,11 @@ namespace KifuManager.BusinessLogicLayer
             content += "DT[" + generalInformation.Rows[0][10] + "]"; //date
 
             DataTable eventInformation = new KifuEventDAL().SelectByID(kifuID);
-            for(int i = 0; i < eventInformation.Rows.Count; i++)
+            for (int i = 0; i < eventInformation.Rows.Count; i++)
             {
-                content += ";" + ((i%2==0)?"B":"W")+ "[" + eventInformation.Rows[i][2] + "]";
+                content += ";" + ((i % 2 == 0) ? "B" : "W") + "[" + eventInformation.Rows[i][2] + "]";
             }
-            return content+")";
+            return content + ")";
         }
 
         public static int UpdateGeneralInformation(Kifu kifu)
@@ -162,16 +162,12 @@ namespace KifuManager.BusinessLogicLayer
             return new OpeningDAL().SelectAll();
         }
 
-        public static int DeleteKifu(string kifuID)
+        public static int DeleteKifu(int kifuID, string username)
         {
-            int id;
-            if (Int32.TryParse(kifuID, out id))
-            {
-                new KifuRatingDAL().Delete(id);
-                new FavouriteKifuDAL().Delete(id);
-                new KifuEventDAL().Delete(id);
-                new KifuDAL().Delete(id);
-            }
+            new KifuRatingDAL().Delete(kifuID);
+            new FavouriteKifuDAL().Delete(new FavouriteKifu(kifuID,username));
+            new KifuEventDAL().Delete(kifuID);
+            new KifuDAL().Delete(kifuID);
             return 0;
         }
 

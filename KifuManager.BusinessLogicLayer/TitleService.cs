@@ -30,7 +30,11 @@ namespace KifuManager.BusinessLogicLayer
         {
             int id;
             if (Int32.TryParse(titleID, out id))
+            {
+                new UserAccDAL().RemoveAllTitle(id);
                 return new TitleDAL().Delete(id);
+            }
+                
             return 0;
         }
     }

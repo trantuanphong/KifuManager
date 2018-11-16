@@ -105,7 +105,7 @@ namespace KifuManager
         {
             if (Request.QueryString["KifuID"] != null)
             {
-                KifuService.DeleteKifu(Request.QueryString["KifuID"].ToString());
+                KifuService.DeleteKifu(KifuID, Session["user"].ToString());
                 Response.Redirect("~/ThaPoTuMi/Home");
             }
         }

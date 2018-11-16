@@ -77,7 +77,7 @@
                                         <a href='AdminSide.aspx?resetPass=<%#Eval("Username") %>'>Reset</a>
                                         <asp:HyperLink NavigateUrl='<%# Eval("Username","~/ThaPoTuMi/AdminSide.aspx?changeStatus={0}") %>'
                                             Visible='<%# Eval("Type").ToString().Equals("0") ? true:false%>' 
-                                            runat="server" Text='<%#Eval("Status").ToString().Equals("True")? "Banned" : "Actived" %>'></asp:HyperLink>
+                                            runat="server" Text='<%#Eval("Status").ToString().Equals("True")? "Ban" : "Active" %>'></asp:HyperLink>
                                     </td>
                                 </tr>
                             </ItemTemplate>

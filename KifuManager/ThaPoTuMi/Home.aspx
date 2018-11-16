@@ -8,7 +8,7 @@
         <div class="col-sm-6">
             <div class="jumbotron">
                 <h1>ThaPoTuMi</h1>
-                <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
+                <p class="lead">This is a free web application for managing kifu!</p>
                 <p><a href="About" class="btn btn-primary btn-lg">About Us &raquo;</a></p>
             </div>
         </div>
